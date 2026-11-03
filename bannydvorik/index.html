@@ -17,14 +17,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter:wght@400;500;600&family=Unbounded:wght@500;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap">
 <link rel="preload" as="image" href="img/hero.jpg">
 <!-- Набросок North Labs (03.11). Источник: north-labs/demo-site/firms/bannydvorik.html, публикация: studia-primer/bannydvorik/ (фото лежат там же в img/, Unsplash).
      Ни одного чужого скрипта: Cloudflare-CDN в РФ режут, поэтому всё своё. Видео пара и печи, звуки: Mixkit (бесплатная лицензия Mixkit), лежат в vid/. Залы и цены: прайс фирмы в 2ГИС; отзывы: 2ГИС. Бронь никуда не уходит. -->
 <script>document.documentElement.classList.add('js');window.__safe=setTimeout(function(){document.documentElement.classList.add('ready','safe')},4500);</script>
 <style>
 @property --tint{syntax:'<color>';inherits:true;initial-value:#e2703a}
-:root{--bg:#0b0907;--card:#1a140f;--ink:#f5ecdf;--muted:#a99c88;--line:rgba(245,236,223,.12);--amber:#f0b267;--ember:#e2703a;--sea:#5fd0c4;--disp:"Unbounded",system-ui,sans-serif;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--pad:clamp(18px,5vw,72px);--ease:cubic-bezier(.22,1,.36,1);--hh:64px}
+:root{--bg:#0b0907;--card:#1a140f;--ink:#f5ecdf;--muted:#a99c88;--line:rgba(245,236,223,.12);--amber:#f0b267;--ember:#e2703a;--sea:#5fd0c4;--disp:"Cormorant Garamond",Georgia,"Times New Roman",serif;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--pad:clamp(18px,5vw,72px);--ease:cubic-bezier(.22,1,.36,1);--hh:64px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none!important}
 html{background:var(--bg);color:var(--ink);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}
@@ -452,6 +452,45 @@ html:not(.js) #loader{display:none}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important}
   html{scroll-behavior:auto}
 }
+/* v5 (03.11): Артём «дешёвый шрифт» — Unbounded убран, заголовки и цифры Cormorant Garamond;
+   контурных букв нет совсем (-webkit-text-stroke на переменном шрифте на iPhone рисует линии внутри букв) */
+.h2{font-weight:600;letter-spacing:.005em;font-size:clamp(40px,10.5vw,116px);line-height:.92}
+.t1{font-weight:600;letter-spacing:.01em;font-size:clamp(54px,19.5vw,230px);line-height:.9}
+.ld-n{font-weight:500;letter-spacing:-.02em}
+.rt-num{font-weight:500;letter-spacing:-.03em;font-size:clamp(130px,44vw,380px)}
+.rt-num.word{font-size:clamp(100px,32vw,300px)}
+.stat b{font-weight:500;letter-spacing:-.01em;font-size:clamp(56px,10vw,120px)}
+.hall h3{font-weight:600;letter-spacing:.02em;font-size:clamp(34px,3.6vw,48px)}
+.hall-price b{font-weight:600;letter-spacing:0;font-size:30px}
+.hall-no{font-weight:300;font-style:italic;letter-spacing:-.02em;color:rgba(245,236,223,.55);-webkit-text-stroke:0}
+.strip-in span{font-weight:500;font-style:italic;text-transform:none;letter-spacing:0;color:rgba(245,236,223,.62);-webkit-text-stroke:0;font-size:clamp(30px,5.6vw,68px)}
+.strip-in span:nth-child(4n+1){color:var(--amber)}
+.giant{font-weight:600;letter-spacing:.01em;font-size:21vw;-webkit-text-stroke:0;color:transparent;background:radial-gradient(circle at var(--mx) var(--my),#ffd9a3 0,var(--amber) 9%,var(--ember) 17%,rgba(245,236,223,.09) 32%);-webkit-background-clip:text;background-clip:text}
+.gc-sum{font-weight:600;letter-spacing:-.01em}
+.logo{font-weight:700;font-size:15px;letter-spacing:.16em}
+.sh-ttl h3{font-weight:600;font-size:25px;letter-spacing:.005em}
+.sum b{font-weight:600;font-size:27px;letter-spacing:0}
+.done h4{font-weight:600;font-size:32px}
+.day b{font-size:23px}
+.opt em{font-size:17px}
+.stepper b{font-size:22px}
+.gift-sums button{font-size:17px}
+.ct-big{font-weight:600;font-size:clamp(25px,2.9vw,36px);letter-spacing:0}
+.rt-steps b{font-size:13px}
+.ow-list li::before{font-size:15px}
+.hall-cta h3{font-size:clamp(36px,3.6vw,50px)}
+.pool-in .h2{font-size:clamp(46px,12vw,140px)}
+.hl-head .h2{font-size:clamp(38px,9vw,104px)}
+.ow .h2{font-size:clamp(36px,7vw,84px)}
+.rt-num,.stat b,.hall-price b,.gc-sum,.sum b,.day b,.opt em,.stepper b,.hall-no,.ct-big,.h2,.kicker b{font-variant-numeric:lining-nums proportional-nums}
+.ld-n{font-variant-numeric:lining-nums tabular-nums}
+.rt-num sup{margin-left:.03em;top:.3em;font-weight:600;-webkit-text-fill-color:var(--tint)}
+.pill.away{opacity:0;transform:translate(-50%,24px);pointer-events:none}
+@media (min-width:960px){
+  .t1{font-size:min(11.5vw,200px)}
+  .rt-num{font-size:min(19vw,340px)}
+  .rt-num.word{font-size:min(14vw,260px)}
+}
 </style>
 </head>
 <body>
@@ -491,7 +530,7 @@ html:not(.js) #loader{display:none}
 
 <section class="ritual" id="ritual" aria-label="Ритуал в четыре шага">
   <div class="rt-sticky" id="rtSticky">
-    <div class="rt-img on" style="background-image:url(vid/pech.jpg)"><video class="rtv" muted playsinline loop preload="none" data-src="vid/pech.mp4" aria-hidden="true"></video></div>
+    <div class="rt-img on" style="background-image:url(vid/pech.jpg)"><video class="rtv" muted playsinline loop preload="none" data-src="vid/pech.mp4" data-src-v="vid/pech-v.mp4" aria-hidden="true"></video></div>
     <div class="rt-img" style="background-image:url(img/zal2.jpg)"><video class="rtv ov" muted playsinline loop preload="none" data-src="vid/steam2.mp4" aria-hidden="true"></video></div>
     <div class="rt-img" style="background-image:url(img/pool.jpg)"></div>
     <div class="rt-img" style="background-image:url(img/zal3.jpg)"></div>
@@ -613,7 +652,7 @@ html:not(.js) #loader{display:none}
 </section>
 </main>
 
-<div class="pill" id="pill"><b>Набросок North Labs</b> · бронь для показа · фото для примера</div>
+<div class="pill" id="pill"><b>Набросок North Labs</b> · бронь и фото для показа</div>
 
 <div class="push" id="push" role="status" aria-live="polite">
   <div class="push-ic"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="#fff" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></div>
@@ -1007,6 +1046,7 @@ function frame(now) {
   const hv = vis('hero'), rv = vis('ritual');
   if (hv !== heroOn) { heroOn = hv; [steamA, steamB].forEach(v => (hv && !reduce) ? vplay(v) : v.pause()); }
   if (rv !== ritOn) { ritOn = rv; syncRitVideos(); }
+  pill.classList.toggle('away', rv || vis('halls') || vis('pool'));
   hdr.classList.toggle('solid', sy > 40);
   prog.style.transform = `scaleX(${clamp(sy / L.max, 0, 1).toFixed(4)})`;
 
@@ -1301,7 +1341,7 @@ function syncRitVideos() {
   rtImgs.forEach((el, k) => {
     const v = $('video', el); if (!v) return;
     if (ritOn && k === stage && !reduce) {
-      if (!v.getAttribute('src')) { v.addEventListener('playing', () => v.classList.add('on'), { once: true }); v.src = v.dataset.src; }
+      if (!v.getAttribute('src')) { v.addEventListener('playing', () => v.classList.add('on'), { once: true }); v.src = (innerHeight > innerWidth * 1.1 && v.dataset.srcV) ? v.dataset.srcV : v.dataset.src; }
       vplay(v);
     } else v.pause();
   });
