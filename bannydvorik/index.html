@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0b0907">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0907'/%3E%3Cg fill='none' stroke='%23f0b267' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M10 25c-3-4 3-6 0-10s3-6 0-9'/%3E%3Cpath d='M16 27c-3-4 3-6 0-10s3-6 0-10'/%3E%3Cpath d='M22 25c-3-4 3-6 0-10s3-6 0-9'/%3E%3C/g%3E%3C/svg%3E">
 <title>Банный дворик · сауна с бассейном в Иркутске</title>
 <meta name="description" content="Финская парная до 100°, турецкий хаммам, бассейн с морской водой 30–32°. Иркутск, ул. Софьи Перовской, 34. Круглосуточно. Онлайн-бронь зала.">
 <meta property="og:type" content="website">
@@ -95,9 +96,9 @@ html:not(.js) #loader{display:none}
 .hero-bg canvas,#steam{position:absolute;inset:0;width:100%;height:100%}
 .hero-bg canvas{opacity:0;transition:opacity 1.4s}
 .hero-bg canvas.on{opacity:1}
-#steam{pointer-events:none;z-index:1}
+#steam{pointer-events:none;z-index:2}
 .hero-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,9,7,.6) 0%,rgba(11,9,7,.05) 26%,rgba(11,9,7,.3) 52%,rgba(11,9,7,.97) 100%)}
-.hero-in{position:relative;z-index:2;width:100%;padding:0 var(--pad) calc(66px + env(safe-area-inset-bottom));will-change:transform,opacity}
+.hero-in{position:relative;z-index:3;width:100%;padding:0 var(--pad) calc(66px + env(safe-area-inset-bottom));will-change:transform,opacity}
 .kicker{display:flex;align-items:center;gap:10px;font-size:12.5px;color:rgba(245,236,223,.85);margin-bottom:14px}
 .kicker .dot{flex:none;width:8px;height:8px;border-radius:50%;background:#7fe08c;animation:pulse 2s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(127,224,140,.55)}70%{box-shadow:0 0 0 10px rgba(127,224,140,0)}100%{box-shadow:0 0 0 0 rgba(127,224,140,0)}}
@@ -109,7 +110,7 @@ html:not(.js) #loader{display:none}
 .cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
 .rating{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
 .rating b{color:var(--amber);font-weight:600}
-.hint{display:none;position:absolute;right:var(--pad);bottom:44px;z-index:2;align-items:center;gap:12px;writing-mode:vertical-rl;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,236,223,.55)}
+.hint{display:none;position:absolute;right:var(--pad);bottom:44px;z-index:3;align-items:center;gap:12px;writing-mode:vertical-rl;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(245,236,223,.55)}
 .hint i{width:1px;height:56px;background:linear-gradient(var(--amber),transparent);animation:drip 2.2s var(--ease) infinite;transform-origin:50% 0}
 @keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
 .js .t1 .ch{transform:translateY(118%) rotate(5deg)}
@@ -330,6 +331,77 @@ html:not(.js) #loader{display:none}
 .sum b{font:800 22px/1.15 var(--disp);letter-spacing:-.02em;white-space:nowrap}
 .sh-foot .btn{flex:none;height:52px}
 
+/* часы, свободные окна */
+.kicker b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.live{display:flex;width:max-content;margin-bottom:10px;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;background:rgba(11,9,7,.74);border:1px solid rgba(127,224,140,.35);font-size:12px;font-weight:500}
+.live i{width:7px;height:7px;border-radius:50%;background:#7fe08c;box-shadow:0 0 10px rgba(127,224,140,.9)}
+
+/* сертификат */
+.gift{padding:clamp(70px,10vw,140px) var(--pad);border-top:1px solid var(--line);overflow:hidden}
+.gift-in{display:grid;gap:44px;align-items:center}
+.gift .h2{margin:12px 0 18px}
+.gift .serif{color:var(--amber)}
+.gift .lead{margin-bottom:0}
+.gift-sums{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 14px}
+.gift-sums button{padding:12px 18px;border-radius:999px;background:rgba(245,236,223,.05);border:1px solid var(--line);font:600 14px/1 var(--disp);transition:background .3s,color .3s}
+.gift-sums button.on{background:var(--ink);border-color:var(--ink);color:#1d1209}
+.gift .fld{max-width:380px;margin-bottom:18px}
+.gift-note{margin-top:12px;font-size:12px;color:var(--muted)}
+.gift-stage{display:grid;place-items:center;perspective:1000px;touch-action:pan-y;padding:12px 0}
+.gcard{--rx:0deg;--ry:0deg;--gx:50%;--gy:35%;position:relative;display:flex;flex-direction:column;justify-content:space-between;width:min(100%,520px);aspect-ratio:1.586;padding:clamp(18px,4vw,26px);border-radius:22px;overflow:hidden;color:#2b1a0b;background:linear-gradient(135deg,#fbe2b8 0%,#efbd77 34%,#cf8a45 68%,#f6d29b 100%);box-shadow:0 34px 70px -24px rgba(0,0,0,.85),inset 0 0 0 1px rgba(255,255,255,.35);transform:rotateX(var(--rx)) rotateY(var(--ry))}
+.gcard::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx) var(--gy),rgba(255,255,255,.62),transparent 42%)}
+.gcard::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;background:repeating-linear-gradient(120deg,transparent 0 12px,rgba(255,255,255,.18) 12px 13px)}
+.gc-top,.gc-sum,.gc-for,.gc-foot{position:relative;z-index:1}
+.gc-top{display:flex;align-items:center;gap:8px;font:600 11.5px/1 var(--disp);letter-spacing:.08em;text-transform:uppercase}
+.gc-top em{font:italic 500 19px/1 var(--serif);letter-spacing:0;text-transform:none}
+.gc-top small{margin-left:auto;font:500 11px/1 var(--sans);letter-spacing:.08em;opacity:.7}
+.gc-sum{font:800 clamp(44px,11vw,66px)/1 var(--disp);letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.gc-for{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.78}
+.gc-for b{display:block;margin-top:4px;font:italic 500 clamp(22px,5.5vw,28px)/1.1 var(--serif);letter-spacing:0;text-transform:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gc-foot{display:flex;justify-content:space-between;gap:10px;font-size:10.5px;opacity:.72}
+
+/* телефон владельца */
+.ow-grid{display:grid;gap:44px}
+.phone{width:min(100%,330px);margin:0 auto;padding:10px;border-radius:40px;background:#0b0907;border:1px solid rgba(245,236,223,.16);box-shadow:0 40px 80px -30px rgba(0,0,0,.9),inset 0 0 0 5px #1b1510}
+.ph-scr{overflow:hidden;border-radius:31px;background:#0e1621}
+.ph-top{display:flex;align-items:center;gap:10px;padding:16px 14px 12px;background:#17212b;color:#fff;font-size:13.5px}
+.ph-top b{font-weight:600}
+.ph-top small{display:block;font-size:11.5px;color:#7d8b99}
+.ph-ava{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--ember));color:#1d1209;font:700 12px/1 var(--disp)}
+.ph-chat{display:flex;flex-direction:column;gap:8px;min-height:390px;padding:14px 10px 16px}
+.msg{position:relative;align-self:flex-start;max-width:92%;padding:9px 12px 19px;border-radius:15px 15px 15px 5px;background:#182533;color:#e6edf3;font-size:12.8px;line-height:1.42;opacity:0;transform:translateY(16px) scale(.97);transform-origin:0 100%;transition:opacity .5s var(--ease),transform .7s var(--ease)}
+.phone.in .msg{opacity:1;transform:none}
+.phone.in .msg:nth-child(2){transition-delay:.7s}
+.phone.in .msg:nth-child(3){transition-delay:1.4s}
+.msg b{display:block;margin-bottom:2px;color:#fff;font-weight:600}
+.msg u{text-decoration:none;color:#6ab3f3}
+.msg .sum{color:var(--amber);font-weight:600}
+.msg time{position:absolute;right:10px;bottom:5px;font-size:10.5px;color:#6d7f8f}
+.kb{display:flex;gap:6px;margin-top:9px}
+.kb span{flex:1;padding:7px 4px;border-radius:9px;background:rgba(106,179,243,.13);color:#8cc4f5;text-align:center;font-size:12px;font-weight:600}
+.kb .ok{background:rgba(127,224,140,.13);color:#8fe39a}
+.ph-cap{margin-top:12px;text-align:center;font-size:12.5px;color:var(--muted)}
+
+/* карта */
+.map{position:relative;display:block;margin-top:44px;aspect-ratio:4/3;border-radius:26px;overflow:hidden;border:1px solid var(--line);background:#14100c}
+.map img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.map:hover img{transform:scale(1.04)}
+.pin{position:absolute;width:0;height:0}
+.pin i,.pin::before,.pin::after{content:"";position:absolute;left:-11px;top:-11px;width:22px;height:22px;border-radius:50%}
+.pin i{z-index:1;background:var(--amber);box-shadow:0 0 0 4px rgba(240,178,103,.28),0 0 34px 8px rgba(240,178,103,.55)}
+.pin::before,.pin::after{border:2px solid var(--amber);animation:ping 2.6s var(--ease) infinite}
+.pin::after{animation-delay:1.3s}
+@keyframes ping{from{transform:scale(1);opacity:.9}to{transform:scale(4.6);opacity:0}}
+.map-tag{position:absolute;left:12px;right:12px;bottom:12px;padding:12px 16px;border-radius:16px;background:rgba(11,9,7,.82);border:1px solid var(--line);font-size:13px}
+.map-tag b{display:block;margin-top:3px;color:var(--amber);font-weight:600}
+.osm{position:absolute;top:8px;right:12px;font-size:10px;color:rgba(245,236,223,.55)}
+@media (min-width:960px){
+  .gift-in{grid-template-columns:1fr 1fr;gap:72px}
+  .ow-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);align-items:center;gap:56px}
+  .ow-grid .ow-list{grid-template-columns:1fr}
+  .map{aspect-ratio:1100/520}
+}
+
 @media (min-width:760px){
   .sheet{left:auto;top:12px;right:12px;bottom:12px;width:450px;max-height:none;border-radius:28px;border-bottom:1px solid rgba(240,178,103,.18);transform:translateX(112%)}
   .sh-grab{display:none}
@@ -349,7 +421,7 @@ html:not(.js) #loader{display:none}
   .rt-in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:64px;align-items:end;padding-bottom:9vh}
   .rt-num{margin-bottom:0;font-size:min(15.5vw,300px)}
   .rt-num.word{font-size:min(12.5vw,240px)}
-  .ct{grid-template-columns:1.4fr 1fr 1fr}
+  .ct{grid-template-columns:1.4fr 1fr}
   .ow-list{grid-template-columns:1fr 1fr;gap:18px 44px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -369,7 +441,7 @@ html:not(.js) #loader{display:none}
     <svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M10 26c-3-4 3-6 0-10s3-6 0-10"/><path d="M16 28c-3-4 3-6 0-10s3-6 0-10"/><path d="M22 26c-3-4 3-6 0-10s3-6 0-10"/></svg>
     <span>Банный<em>дворик</em></span>
   </a>
-  <nav class="nav" aria-label="Разделы"><a href="#ritual">Ритуал</a><a href="#halls">Залы</a><a href="#pool">Бассейн</a><a href="#otzyvy">Отзывы</a><a href="#kontakty">Контакты</a></nav>
+  <nav class="nav" aria-label="Разделы"><a href="#ritual">Ритуал</a><a href="#halls">Залы</a><a href="#pool">Бассейн</a><a href="#otzyvy">Отзывы</a><a href="#podarok">Подарок</a><a href="#kontakty">Контакты</a></nav>
   <button class="btn sm" data-open data-magnet>Забронировать</button>
 </header>
 
@@ -379,7 +451,7 @@ html:not(.js) #loader{display:none}
   <canvas id="steam" aria-hidden="true"></canvas>
   <div class="hero-shade"></div>
   <div class="hero-in" id="heroIn">
-    <p class="kicker"><span class="dot"></span>Открыто сейчас · Иркутск, Софьи Перовской, 34</p>
+    <p class="kicker"><span class="dot"></span>Открыто · в Иркутске <b id="clock">--:--</b> · Софьи Перовской, 34</p>
     <h1 class="title" aria-label="Банный дворик"><span class="t1" aria-hidden="true">Банный</span><span class="t2" aria-hidden="true">дворик</span></h1>
     <div class="hero-side">
       <p class="lead">Финская парная до 100°, турецкий хаммам и тёплый бассейн с морской водой. Четыре зала для вашей компании, круглосуточно.</p>
@@ -452,18 +524,51 @@ html:not(.js) #loader{display:none}
   <div class="rv-row rev" id="rv2"></div>
 </section>
 
+<section class="gift" id="podarok" aria-label="Подарочный сертификат">
+  <div class="gift-in">
+    <div data-rv>
+      <p class="eyebrow">Подарок к Новому году</p>
+      <h2 class="h2" data-split>Подарите <span class="serif">вечер в бане</span></h2>
+      <p class="lead">Электронный сертификат: выбираете сумму, пишете, кому он, и открытка приходит сразу после оплаты.</p>
+      <div class="gift-sums" id="gsums"><button data-sum="3000">3&nbsp;000&nbsp;₽</button><button data-sum="5000" class="on">5&nbsp;000&nbsp;₽</button><button data-sum="10000">10&nbsp;000&nbsp;₽</button></div>
+      <label class="fld"><span>Кому</span><input id="gname" maxlength="20" placeholder="Например, Ксюше" autocomplete="off"></label>
+      <button class="btn" id="gbuy" data-magnet><span>Оформить сертификат</span><i>→</i></button>
+      <p class="gift-note">В наброске оплата для показа: деньги не списываются.</p>
+    </div>
+    <div class="gift-stage" id="gstage">
+      <div class="gcard" id="gcard" role="img" aria-label="Подарочный сертификат «Банного дворика»">
+        <div class="gc-top"><svg width="20" height="20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M10 26c-3-4 3-6 0-10s3-6 0-10"/><path d="M16 28c-3-4 3-6 0-10s3-6 0-10"/><path d="M22 26c-3-4 3-6 0-10s3-6 0-10"/></svg><span>Банный<em> дворик</em></span><small id="gcno">№ 0427</small></div>
+        <div class="gc-sum"><span id="gcsum">5&nbsp;000</span> ₽</div>
+        <div class="gc-for">Подарочный сертификат<b id="gcname">Самому близкому</b></div>
+        <div class="gc-foot"><span>Иркутск, Софьи Перовской, 34</span><span>круглосуточно</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="owner" id="dlya-vas" aria-label="Для владельца">
   <div class="ow" data-rv>
-    <p class="eyebrow">Для владельца «Банного дворика»</p>
-    <h2 class="h2" data-split>Этот сайт <span class="serif">может быть вашим</span></h2>
-    <ol class="ow-list">
-      <li><span><b>Бронь без звонков.</b> Гость сам выбирает зал, день и время, а заявка сразу приходит вам в Telegram.</span></li>
-      <li><span><b>Работает ночью.</b> Вы открыты круглосуточно, и сайт принимает брони в 3 часа ночи, пока администратор отдыхает.</span></li>
-      <li><span><b>Цены и залы на виду.</b> Меньше одинаковых вопросов в чате: гость всё видит заранее.</span></li>
-      <li><span><b>Одна ссылка везде.</b> Ставите её в 2ГИС, Telegram и на визитки, и гости бронируют напрямую.</span></li>
-    </ol>
-    <button class="btn" data-open data-magnet><span>Попробовать бронь</span><i>→</i></button>
-    <p class="ow-note">Это набросок от студии North Labs. Фото взяты для примера, бронь демонстрационная. Поставим ваши фото и цены и подключим заявки к вашему Telegram: просто ответьте нам в чате.</p>
+    <div class="ow-grid">
+      <div>
+        <p class="eyebrow">Для владельца «Банного дворика»</p>
+        <h2 class="h2" data-split>Этот сайт <span class="serif">может быть вашим</span></h2>
+        <ol class="ow-list">
+          <li><span><b>Бронь без звонков.</b> Гость сам выбирает зал, день и время, а заявка сразу приходит вам в Telegram.</span></li>
+          <li><span><b>Одна кнопка.</b> «Подтвердить» или «Отменить» прямо в Telegram, и все администраторы видят, кто нажал.</span></li>
+          <li><span><b>Работает ночью.</b> Вы открыты круглосуточно, и сайт принимает брони в 3 часа ночи, пока администратор отдыхает.</span></li>
+          <li><span><b>Сертификаты продаются сами.</b> Перед Новым годом их ищут в подарок: оплата на сайте, каждую продажу вы видите в Telegram.</span></li>
+        </ol>
+        <button class="btn" data-open data-magnet><span>Попробовать бронь</span><i>→</i></button>
+        <p class="ow-note">Это набросок от студии North Labs. Фото взяты для примера, бронь и оплата демонстрационные. Поставим ваши фото и цены и подключим заявки к вашему Telegram: просто ответьте нам в чате.</p>
+      </div>
+      <div class="phone" id="phone">
+        <div class="ph-scr">
+          <div class="ph-top"><span class="ph-ava">БД</span><span><b>Банный дворик · брони</b><small>бот North Labs</small></span></div>
+          <div class="ph-chat" id="phChat"></div>
+        </div>
+        <p class="ph-cap">Так заявки приходят владельцу</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -471,8 +576,13 @@ html:not(.js) #loader{display:none}
   <div class="ct">
     <div data-rv><p class="eyebrow">Адрес</p><p class="ct-big">Иркутск, ул.&nbsp;Софьи Перовской,&nbsp;34</p><p class="muted">1 этаж</p></div>
     <div data-rv><p class="eyebrow">Часы работы</p><p class="ct-big">Круглосуточно</p><p class="muted">без выходных</p></div>
-    <div data-rv><p class="eyebrow">Как добраться</p><a class="btn ghost" href="https://2gis.ru/irkutsk/firm/70000001111151555" target="_blank" rel="noopener">Открыть в 2ГИС</a></div>
   </div>
+  <a class="map" href="https://2gis.ru/irkutsk/firm/70000001111151555" target="_blank" rel="noopener" data-rv>
+    <img src="img/karta.jpg" alt="Карта: Иркутск, ул. Софьи Перовской, 34" loading="lazy" decoding="async">
+    <span class="pin" style="left:49.32%;top:50.06%"><i></i></span>
+    <span class="map-tag">Банный дворик · Софьи Перовской, 34<b>Построить маршрут в 2ГИС →</b></span>
+    <small class="osm">© OpenStreetMap</small>
+  </a>
   <div class="giant" id="giant" aria-hidden="true"><span>Банный</span><span>дворик</span></div>
   <footer class="foot"><span>© 2026 Банный дворик</span><span>Набросок сайта · студия North Labs</span></footer>
 </section>
@@ -542,6 +652,8 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 const plural = (n, a, b, c) => { const d = n % 10, h = n % 100; return d === 1 && h !== 11 ? a : d >= 2 && d <= 4 && (h < 12 || h > 14) ? b : c; };
 const hrs = n => n + ' ' + plural(n, 'час', 'часа', 'часов');
 const gst = n => n + ' ' + plural(n, 'гость', 'гостя', 'гостей');
+const SLOTS = ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '00:00'];
+const irk = () => new Date(Date.now() + 8 * 3600e3); /* Иркутск, UTC+8: читать через getUTC* */
 
 /* Залы и цены: прайс «Банного дворика» в 2ГИС (03.11). */
 const HALLS = [
@@ -563,13 +675,17 @@ const REV = [
 ];
 
 /* ---------- разметка из данных ---------- */
+const firstFree = hall => { for (let day = 0; day < 3; day++) for (let k = 0; k < SLOTS.length; k++) if (slotFree(day, k, hall)) return { day, k }; return null; };
+const FREE = HALLS.map((_, i) => firstFree(i));
+const liveBadge = i => { const f = FREE[i]; return f ? `<span class="live"><i></i>свободно ${f.day === 0 ? 'сегодня' : f.day === 1 ? 'завтра' : 'послезавтра'} с ${SLOTS[f.k]}</span>` : ''; };
+const preAttr = i => FREE[i] ? ` data-pre="${FREE[i].day}:${FREE[i].k}"` : '';
 const track = $('#track');
 track.innerHTML = HALLS.map((h, i) => `<article class="hall">
 <div class="hall-ph"><img src="${IMG(h.img)}" alt="${h.name}: ${h.kind.toLowerCase()}" decoding="async"></div>
 <span class="hall-no" aria-hidden="true">0${i + 1}</span>
-<div class="hall-body"><span class="hall-tag ${h.cls}">${h.kind} · ${h.t}</span><h3>${h.name}</h3>
+<div class="hall-body">${liveBadge(i)}<span class="hall-tag ${h.cls}">${h.kind} · ${h.t}</span><h3>${h.name}</h3>
 <ul class="hall-meta">${h.meta.map(m => `<li>${m}</li>`).join('')}</ul>
-<div class="hall-foot"><div class="hall-price"><b>${rub(h.price)}</b><span>за час · до ${h.base} гостей</span></div><button class="btn sm" data-open="${i}" data-magnet>Выбрать</button></div></div>
+<div class="hall-foot"><div class="hall-price"><b>${rub(h.price)}</b><span>за час · до ${h.base} гостей</span></div><button class="btn sm" data-open="${i}"${preAttr(i)} data-magnet>Выбрать</button></div></div>
 </article>`).join('') + `<article class="hall hall-cta"><div class="hall-body"><p class="eyebrow">Онлайн-бронь</p><h3>Бронь за 30 секунд</h3><p>Выберите зал, день и время. Администратор свяжется и подтвердит.</p><button class="btn" data-open data-magnet><span>Забронировать</span><i>→</i></button></div></article>`;
 
 const card = ([q, n]) => `<figure class="rv"><blockquote>${q}</blockquote><figcaption><span class="av">${n[0]}</span>${n}<span class="st" aria-label="5 звёзд">★★★★★</span></figcaption></figure>`;
@@ -758,11 +874,22 @@ sprite.width = sprite.height = 128;
   g.fillStyle = gr; g.fillRect(0, 0, 128, 128);
 }
 function sizeSteam() { SW = steam.width = Math.max(1, Math.ceil(steam.clientWidth / 2)); SH = steam.height = Math.max(1, Math.ceil(steam.clientHeight / 2)); }
+const E = [];
+const ember = document.createElement('canvas');
+ember.width = ember.height = 32;
+{
+  const g = ember.getContext('2d'), gr = g.createRadialGradient(16, 16, 0, 16, 16, 16);
+  gr.addColorStop(0, 'rgba(255,236,200,1)'); gr.addColorStop(.25, 'rgba(255,170,90,.85)'); gr.addColorStop(1, 'rgba(255,110,40,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, 32, 32);
+}
+/* искры от печки: снизу, быстро вверх, мерцают */
+function spawnEmber() { E.push({ x: SW * (.25 + Math.random() * .55), y: SH * (.5 + Math.random() * .3), vx: (Math.random() - .5) * 14, vy: -(26 + Math.random() * 38), s: 4 + Math.random() * 5, life: 0, max: 1.8 + Math.random() * 2.2, ph: Math.random() * 6.3 }); }
 function spawn(x, y, puff) {
   if (P.length > 90) return;
   P.push({ x, y, r: puff ? 18 + Math.random() * 22 : 30 + Math.random() * 46, vx: (Math.random() - .5) * 10, vy: -(9 + Math.random() * 16), life: 0, max: puff ? 2.4 + Math.random() * 1.6 : 4 + Math.random() * 4, ph: Math.random() * 6.3, a: puff ? .16 : .07 + Math.random() * .06 });
 }
 function steamFrame(t, dt) {
+  if (E.length < 30 && Math.random() < .4) spawnEmber();
   if (P.length < 44 && Math.random() < .55) spawn(Math.random() * SW, SH * (.62 + Math.random() * .42), false);
   sx.clearRect(0, 0, SW, SH);
   for (let i = P.length - 1; i >= 0; i--) {
@@ -772,6 +899,17 @@ function steamFrame(t, dt) {
     sx.globalAlpha = Math.sin(p.life / p.max * Math.PI) * p.a;
     sx.drawImage(sprite, p.x - p.r, p.y - p.r, p.r * 2, p.r * 2);
   }
+  sx.globalAlpha = 1;
+  sx.globalCompositeOperation = 'lighter';
+  for (let i = E.length - 1; i >= 0; i--) {
+    const p = E[i]; p.life += dt;
+    if (p.life > p.max) { E.splice(i, 1); continue; }
+    p.vx += Math.sin(t * 3 + p.ph) * 18 * dt; p.x += p.vx * dt; p.y += p.vy * dt;
+    const k = p.life / p.max, s = p.s * (1 - k * .5);
+    sx.globalAlpha = (1 - k) * Math.min(1, k * 6) * (.6 + .4 * Math.sin(t * 14 + p.ph * 3));
+    sx.drawImage(ember, p.x - s, p.y - s, s * 2, s * 2);
+  }
+  sx.globalCompositeOperation = 'source-over';
   sx.globalAlpha = 1;
 }
 const heroPoint = (cx, cy, mouse) => {
@@ -793,7 +931,7 @@ const rtImgs = $$('.rt-img'), rtNames = $$('.rt-name'), rtTexts = $$('.rt-text')
 const halls = $('#halls'), hlSticky = $('#hlSticky'), hlBar = $('#hlBar');
 const cards = $$('.hall', track), cardImgs = cards.map(c => $('img', c));
 const giant = $('#giant');
-const SECS = { hero: heroEl, strip: $('.strip'), ritual, halls, pool: poolEl, giant };
+const SECS = { hero: heroEl, strip: $('.strip'), ritual, halls, pool: poolEl, gift: $('#podarok'), giant };
 const L = { vh: innerHeight, max: 1 };
 let hlDist = 0, hlCur = 0, sy = scrollY;
 
@@ -886,6 +1024,12 @@ function frame(now) {
     if (t - lastUser > 2.6 && t - lastAuto > 1.5) { lastAuto = t; drop(Math.random() * (water.w / water.h), .2 + Math.random() * .6, t); }
     water.draw(t);
   }
+  if (vis('gift') && !reduce) {
+    if (now - cardPtr > 1600) { gT.x = Math.sin(t * .7) * .55; gT.y = Math.cos(t * .5) * .35; }
+    gC.x += (gT.x - gC.x) * .08; gC.y += (gT.y - gC.y) * .08;
+    gcard.style.setProperty('--ry', (gC.x * 16).toFixed(2) + 'deg'); gcard.style.setProperty('--rx', (-gC.y * 12).toFixed(2) + 'deg');
+    gcard.style.setProperty('--gx', (50 + gC.x * 45).toFixed(1) + '%'); gcard.style.setProperty('--gy', (35 + gC.y * 45).toFixed(1) + '%');
+  }
   if (vis('giant') && !reduce) {
     let tx = gx, ty = gy;
     if (now - gPtr > 1800) { tx = 50 + Math.sin(t * .55) * 42; ty = 50 + Math.cos(t * .8) * 34; }
@@ -936,8 +1080,6 @@ const st = { hall: 0, day: 0, slot: null, hours: 2, guests: 6, step: 1 };
 const TITLES = ['', 'Выберите зал', 'Когда приедете?', 'Ваши контакты', 'Заявка принята'];
 const WD = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
 const MON = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-const SLOTS = ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '00:00'];
-const irk = () => new Date(Date.now() + 8 * 3600e3); /* Иркутск, UTC+8: читать через getUTC* */
 let days = [];
 const total = () => { const h = HALLS[st.hall]; return (h.price + Math.max(0, st.guests - h.base) * 500) * st.hours; };
 
@@ -949,10 +1091,10 @@ function buildDays() {
     return { top, n: d.getUTCDate(), full: top + ', ' + d.getUTCDate() + NB + MON[d.getUTCMonth()], we: d.getUTCDay() === 0 || d.getUTCDay() === 6 };
   });
 }
-function slotFree(day, k) {
+function slotFree(day, k, hall = st.hall) {
   if (k < 0) return false;
   if (day === 0) { const h = SLOTS[k] === '00:00' ? 24 : parseInt(SLOTS[k], 10); if (h <= irk().getUTCHours() + 1) return false; }
-  const x = Math.sin((day + 1) * 12.9898 + (st.hall + 1) * 78.233 + (k + 1) * 37.719) * 43758.5453;
+  const x = Math.sin((day + 1) * 12.9898 + (hall + 1) * 78.233 + (k + 1) * 37.719) * 43758.5453;
   return x - Math.floor(x) > .24;
 }
 function renderOpts() {
@@ -994,8 +1136,9 @@ function go(n) {
   shBody.scrollTop = 0;
 }
 let lastFocus = null, pushTimer = 0;
-function openSheet(v) {
+function openSheet(v, pre) {
   lastFocus = document.activeElement;
+  if (pre) { const [d, k] = pre.split(':').map(Number); st.day = d; st.slot = SLOTS[k]; }
   if (v !== undefined && v !== '') { st.hall = +v; st.guests = HALLS[st.hall].base; renderOpts(); go(2); }
   else { renderOpts(); go(1); }
   sheet.classList.add('open'); sheet.setAttribute('aria-hidden', 'false');
@@ -1010,7 +1153,7 @@ function closeSheet() {
 }
 document.addEventListener('click', e => {
   const o = e.target.closest('[data-open]');
-  if (o) { e.preventDefault(); openSheet(o.dataset.open); }
+  if (o) { e.preventDefault(); openSheet(o.dataset.open, o.dataset.pre); }
 });
 addEventListener('keydown', e => { if (e.key === 'Escape' && sheet.classList.contains('open')) closeSheet(); });
 sheet.addEventListener('click', e => {
@@ -1068,10 +1211,61 @@ function send() {
 function showPush() {
   const h = HALLS[st.hall], dg = fp.value.replace(/\D/g, '');
   pushT.innerHTML = `<b>Новая бронь с сайта</b><br>${h.name} (${h.kind.toLowerCase()}), ${days[st.day].full}, ${st.slot}<br>${hrs(st.hours)} · ${gst(st.guests)} · ${rub(total())}<br>${esc(fn.value.trim())}, +7${NB}${dg.slice(1, 4)}${NB}***-**-${dg.slice(9, 11)}`;
-  push.classList.add('show');
-  clearTimeout(pushTimer); pushTimer = setTimeout(() => push.classList.remove('show'), 9000);
+  showPushEl();
 }
+function showPushEl() { push.classList.add('show'); clearTimeout(pushTimer); pushTimer = setTimeout(() => push.classList.remove('show'), 9000); }
 push.addEventListener('click', () => push.classList.remove('show'));
+
+/* ---------- сертификат ---------- */
+const gcard = $('#gcard'), gsumEl = $('#gcsum'), gnameEl = $('#gcname'), gname = $('#gname'), gbuy = $('#gbuy');
+const gT = { x: 0, y: 0 }, gC = { x: 0, y: 0 };
+let cardPtr = -1e9, gSum = 5000, gShown = 5000, gNo = 427, gRaf = 0;
+const thin = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, NB);
+$('#gstage').addEventListener('pointermove', e => {
+  const r = gcard.getBoundingClientRect();
+  gT.x = clamp(((e.clientX - r.left) / r.width - .5) * 2, -1, 1); gT.y = clamp(((e.clientY - r.top) / r.height - .5) * 2, -1, 1); cardPtr = performance.now();
+});
+$('#gsums').addEventListener('click', e => {
+  const b = e.target.closest('[data-sum]'); if (!b) return;
+  $$('[data-sum]').forEach(x => x.classList.toggle('on', x === b));
+  const from = gShown, to = +b.dataset.sum, t0 = performance.now(); gSum = to;
+  cancelAnimationFrame(gRaf);
+  if (reduce) { gShown = to; gsumEl.textContent = thin(to); return; }
+  const f = now => { const k = clamp((now - t0) / 650, 0, 1); gShown = from + (to - from) * (1 - Math.pow(1 - k, 3)); gsumEl.textContent = thin(Math.round(gShown / 100) * 100); if (k < 1) gRaf = requestAnimationFrame(f); };
+  gRaf = requestAnimationFrame(f);
+});
+gname.addEventListener('input', () => { gnameEl.textContent = gname.value.trim() || 'Самому близкому'; });
+gbuy.addEventListener('click', () => {
+  if (gbuy.classList.contains('wait')) return;
+  gbuy.classList.add('wait'); $('span', gbuy).textContent = 'Оформляем';
+  setTimeout(() => {
+    gbuy.classList.remove('wait'); $('span', gbuy).textContent = 'Готово, смотрите наверх';
+    const who = gname.value.trim();
+    pushT.innerHTML = `<b>🎁 Оплачен сертификат с сайта</b><br>${rub(gSum)} · №${String(gNo).padStart(4, '0')}${who ? '<br>Кому: ' + esc(who) : ''}`;
+    showPushEl();
+    gNo++; $('#gcno').textContent = '№ ' + String(gNo).padStart(4, '0');
+    setTimeout(() => { $('span', gbuy).textContent = 'Оформить сертификат'; }, 4000);
+  }, 900);
+});
+
+/* ---------- телефон владельца: так приходят заявки ---------- */
+const phone = $('#phone');
+buildDays();
+{
+  const b1 = (HALLS[2].price + 2 * 500) * 3, b2 = (HALLS[3].price + 4 * 500) * 4;
+  $('#phChat').innerHTML = `<div class="msg"><b>🔔 Новая бронь с сайта</b>Зал №3 · финская парная<br>${days[3].full}, 20:00 · 3 часа · 8 гостей<br>Андрей, <u>+7 914 ***-**-21</u> · <span class="sum">${rub(b1)}</span><div class="kb"><span class="ok">✓ Подтверждено</span></div><time>14:02</time></div>` +
+    `<div class="msg"><b>🎁 Оплачен сертификат</b>${rub(5000)} · кому: Ксюше<time>15:47</time></div>` +
+    `<div class="msg"><b>🔔 Новая бронь с сайта</b>Домик · парная и бильярд<br>${days[4].full}, 18:00 · 4 часа · 12 гостей<br>Ольга, <u>+7 902 ***-**-07</u> · <span class="sum">${rub(b2)}</span><div class="kb"><span>Подтвердить</span><span>Отменить</span></div><time>сейчас</time></div>`;
+}
+if ('IntersectionObserver' in window && !reduce) {
+  const pio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { phone.classList.add('in'); pio.disconnect(); } }), { threshold: .3 });
+  pio.observe(phone);
+} else phone.classList.add('in');
+
+/* ---------- часы Иркутска в первом экране ---------- */
+const clockEl = $('#clock');
+const tickClock = () => { const d = irk(); clockEl.textContent = String(d.getUTCHours()).padStart(2, '0') + ':' + String(d.getUTCMinutes()).padStart(2, '0'); };
+tickClock(); setInterval(tickClock, 15000);
 
 clearTimeout(window.__safe);
 })();
