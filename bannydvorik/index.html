@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Inter:wght@400;500;600&family=Unbounded:wght@500;600;800&display=swap">
 <link rel="preload" as="image" href="img/hero.jpg">
 <!-- Набросок North Labs (03.11). Источник: north-labs/demo-site/firms/bannydvorik.html, публикация: studia-primer/bannydvorik/ (фото лежат там же в img/, Unsplash).
-     Ни одного чужого скрипта: Cloudflare-CDN в РФ режут, поэтому всё своё. Залы и цены: прайс фирмы в 2ГИС; отзывы: 2ГИС. Бронь никуда не уходит. -->
+     Ни одного чужого скрипта: Cloudflare-CDN в РФ режут, поэтому всё своё. Видео пара и печи, звуки: Mixkit (бесплатная лицензия Mixkit), лежат в vid/. Залы и цены: прайс фирмы в 2ГИС; отзывы: 2ГИС. Бронь никуда не уходит. -->
 <script>document.documentElement.classList.add('js');window.__safe=setTimeout(function(){document.documentElement.classList.add('ready','safe')},4500);</script>
 <style>
 @property --tint{syntax:'<color>';inherits:true;initial-value:#e2703a}
@@ -402,6 +402,30 @@ html:not(.js) #loader{display:none}
   .map{aspect-ratio:1100/520}
 }
 
+/* v4: живой пар, печь, «Поддать пару», звук */
+.hero-bg .sv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;opacity:0;transition:opacity 1.8s;pointer-events:none}
+.hero-bg .sv.on{opacity:.66}
+.hero-bg .sb.on{opacity:.24}
+.hero.puff .hero-bg .sv.on{opacity:1;transition:opacity .3s}
+.flick{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(55% 40% at 70% 80%,rgba(255,140,60,.42),transparent 72%);opacity:.5}
+.fog{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(130% 85% at 50% 105%,rgba(255,247,238,.62),rgba(255,247,238,.2) 55%,transparent 82%);opacity:0;transition:opacity 2.6s var(--ease)}
+.hero.puff .fog{opacity:1;transition:opacity .35s}
+.btn.par svg{flex:none}
+.btn.par:active svg{transform:rotate(-25deg)}
+.btn.par svg{transition:transform .4s var(--ease)}
+.tmp.hot b{animation:hot 1.4s var(--ease)}
+@keyframes hot{0%{color:#ffb070;text-shadow:0 0 14px rgba(255,120,60,.95)}}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.snd{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:rgba(245,236,223,.08);border:1px solid var(--line);color:var(--ink);transition:background .3s,color .3s}
+.snd .w{opacity:.35;transition:opacity .3s}
+.snd.on{background:var(--amber);border-color:var(--amber);color:#1d1209}
+.snd.on .w{opacity:1}
+@media (max-width:349px){.snd{display:none}}
+.rtv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s}
+.rtv.on{opacity:1}
+.rtv.ov{mix-blend-mode:screen}
+.rtv.ov.on{opacity:.9}
+
 @media (min-width:760px){
   .sheet{left:auto;top:12px;right:12px;bottom:12px;width:450px;max-height:none;border-radius:28px;border-bottom:1px solid rgba(240,178,103,.18);transform:translateX(112%)}
   .sh-grab{display:none}
@@ -442,21 +466,22 @@ html:not(.js) #loader{display:none}
     <span>Банный<em>дворик</em></span>
   </a>
   <nav class="nav" aria-label="Разделы"><a href="#ritual">Ритуал</a><a href="#halls">Залы</a><a href="#pool">Бассейн</a><a href="#otzyvy">Отзывы</a><a href="#podarok">Подарок</a><a href="#kontakty">Контакты</a></nav>
-  <button class="btn sm" data-open data-magnet>Забронировать</button>
+  <div class="hdr-r"><button class="snd" id="snd" type="button" aria-label="Звук печи" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="w" d="M15.5 9a4 4 0 0 1 0 6M18.3 6.5a7.5 7.5 0 0 1 0 11"/></svg></button><button class="btn sm" data-open data-magnet>Забронировать</button></div>
 </header>
 
 <main>
 <section class="hero" id="top">
-  <div class="hero-bg"><canvas id="heat" aria-hidden="true"></canvas></div>
+  <div class="hero-bg"><video class="sv" id="steamA" muted playsinline loop preload="auto" aria-hidden="true"></video><video class="sv sb" id="steamB" muted playsinline loop preload="auto" src="vid/steam2.mp4" aria-hidden="true"></video><div class="flick" id="flick"></div></div>
   <canvas id="steam" aria-hidden="true"></canvas>
   <div class="hero-shade"></div>
+  <div class="fog"></div>
   <div class="hero-in" id="heroIn">
-    <p class="kicker"><span class="dot"></span>Открыто · в Иркутске <b id="clock">--:--</b> · Софьи Перовской, 34</p>
+    <p class="kicker"><span class="dot"></span>Открыто · в Иркутске <b id="clock">--:--</b> · <span class="tmp">в парной <b id="tempV">96</b>°</span></p>
     <h1 class="title" aria-label="Банный дворик"><span class="t1" aria-hidden="true">Банный</span><span class="t2" aria-hidden="true">дворик</span></h1>
     <div class="hero-side">
       <p class="lead">Финская парная до 100°, турецкий хаммам и тёплый бассейн с морской водой. Четыре зала для вашей компании, круглосуточно.</p>
-      <div class="cta"><button class="btn" data-open data-magnet><span>Забронировать зал</span><i>→</i></button><a class="btn ghost" href="#halls">Смотреть залы</a></div>
-      <a class="rating" href="https://2gis.ru/irkutsk/firm/70000001111151555" target="_blank" rel="noopener"><b>★ 5,0</b>234 оценки в 2ГИС</a>
+      <div class="cta"><button class="btn" data-open data-magnet><span>Забронировать зал</span><i>→</i></button><button class="btn ghost par" id="parBtn" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h11a5.5 5.5 0 0 1-11 0z"/><path d="M14 12l7-7"/><path d="M6 8.5c0-1.2 1.2-1.6 1.2-2.8M9.6 8.5c0-1.2 1.2-1.6 1.2-2.8"/></svg><span>Поддать пару</span></button></div>
+      <a class="rating" href="https://2gis.ru/irkutsk/firm/70000001111151555" target="_blank" rel="noopener"><b>★ 5,0</b>234 оценки в 2ГИС · Софьи Перовской, 34</a>
     </div>
   </div>
   <div class="hint" aria-hidden="true"><i></i>листайте</div>
@@ -466,8 +491,8 @@ html:not(.js) #loader{display:none}
 
 <section class="ritual" id="ritual" aria-label="Ритуал в четыре шага">
   <div class="rt-sticky" id="rtSticky">
-    <div class="rt-img on" style="background-image:url(img/domik.jpg)"></div>
-    <div class="rt-img" style="background-image:url(img/zal2.jpg)"></div>
+    <div class="rt-img on" style="background-image:url(vid/pech.jpg)"><video class="rtv" muted playsinline loop preload="none" data-src="vid/pech.mp4" aria-hidden="true"></video></div>
+    <div class="rt-img" style="background-image:url(img/zal2.jpg)"><video class="rtv ov" muted playsinline loop preload="none" data-src="vid/steam2.mp4" aria-hidden="true"></video></div>
     <div class="rt-img" style="background-image:url(img/pool.jpg)"></div>
     <div class="rt-img" style="background-image:url(img/zal3.jpg)"></div>
     <div class="rt-shade"></div>
@@ -842,14 +867,11 @@ function glPic(canvas, frag, src, extra) {
 }
 
 const T0 = performance.now();
+let heroOn = null, ritOn = false;
 const heroEl = $('.hero'), heroIn = $('#heroIn'), poolEl = $('#pool');
 const mT = { x: .5, y: .45 }, mC = { x: .5, y: .45 };
 let mouseOn = false, heroK = 0, mK = .3; /* сила линзы жара: под мышью 1, сама по себе слабее */
-const heat = glPic($('#heat'), HEAT, IMG('hero'), (gl, o) => {
-  gl.uniform2f(o.uM || (o.uM = o.U('u_m')), mC.x, mC.y);
-  gl.uniform1f(o.uS || (o.uS = o.U('u_s')), heroK);
-  gl.uniform1f(o.uK || (o.uK = o.U('u_mk')), mK);
-});
+const heat = null; /* v4: над фото теперь настоящий пар (видео), дрожь WebGL снята, чтобы не грузить телефон */
 const drops = new Float32Array(24).fill(-99);
 let di = 0, lastUser = -99, lastAuto = 0, lastMove = 0;
 const water = glPic($('#water'), WATER, IMG('pool'), (gl, o) => gl.uniform3fv(o.uD || (o.uD = o.U('u_d')), drops));
@@ -890,7 +912,7 @@ function spawn(x, y, puff) {
 }
 function steamFrame(t, dt) {
   if (E.length < 30 && Math.random() < .4) spawnEmber();
-  if (P.length < 44 && Math.random() < .55) spawn(Math.random() * SW, SH * (.62 + Math.random() * .42), false);
+  if (P.length < 24 && Math.random() < .4) spawn(Math.random() * SW, SH * (.62 + Math.random() * .42), false);
   sx.clearRect(0, 0, SW, SH);
   for (let i = P.length - 1; i >= 0; i--) {
     const p = P[i]; p.life += dt;
@@ -964,6 +986,7 @@ function setStage(i) {
   rtNames.forEach((e, k) => { e.classList.toggle('on', k === i); e.classList.toggle('up', k < i); });
   rtTexts.forEach((e, k) => e.classList.toggle('on', k === i));
   rtSteps.forEach((e, k) => e.classList.toggle('on', k === i));
+  syncRitVideos();
   rtNum.classList.remove('bump'); void rtNum.offsetWidth; rtNum.classList.add('bump');
   if (STG[i].n == null) { cancelAnimationFrame(numRaf); rtNum.classList.add('word'); rtn.textContent = '24/7'; rtu.hidden = true; }
   else {
@@ -981,6 +1004,9 @@ function frame(now) {
   const t = (now - T0) / 1000;
   sy = scrollY;
   vy += ((sy - lastY) / dt - vy) * .15; lastY = sy;
+  const hv = vis('hero'), rv = vis('ritual');
+  if (hv !== heroOn) { heroOn = hv; [steamA, steamB].forEach(v => (hv && !reduce) ? vplay(v) : v.pause()); }
+  if (rv !== ritOn) { ritOn = rv; syncRitVideos(); }
   hdr.classList.toggle('solid', sy > 40);
   prog.style.transform = `scaleX(${clamp(sy / L.max, 0, 1).toFixed(4)})`;
 
@@ -993,6 +1019,7 @@ function frame(now) {
       mC.x += (mT.x - mC.x) * .06; mC.y += (mT.y - mC.y) * .06; mK += ((mouseOn ? 1 : .3) - mK) * .05;
       if (heat) heat.draw(t);
       steamFrame(t, dt);
+      flick.style.opacity = (.42 + .2 * Math.sin(t * 7.3) * Math.sin(t * 3.1 + 1) + .1 * Math.sin(t * 13.7)).toFixed(3);
     }
   }
   if (vis('strip') && !reduce) {
@@ -1266,6 +1293,67 @@ if ('IntersectionObserver' in window && !reduce) {
 const clockEl = $('#clock');
 const tickClock = () => { const d = irk(); clockEl.textContent = String(d.getUTCHours()).padStart(2, '0') + ':' + String(d.getUTCMinutes()).padStart(2, '0'); };
 tickClock(); setInterval(tickClock, 15000);
+
+/* ---------- v4: живой пар (видео), «Поддать пару», звук печи ---------- */
+const steamA = $('#steamA'), steamB = $('#steamB'), flick = $('#flick');
+function vplay(v) { if (!v) return; v.muted = true; const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); }
+function syncRitVideos() {
+  rtImgs.forEach((el, k) => {
+    const v = $('video', el); if (!v) return;
+    if (ritOn && k === stage && !reduce) {
+      if (!v.getAttribute('src')) { v.addEventListener('playing', () => v.classList.add('on'), { once: true }); v.src = v.dataset.src; }
+      vplay(v);
+    } else v.pause();
+  });
+}
+steamA.src = 'vid/' + (innerHeight > innerWidth * 1.1 ? 'steam-v' : 'steam-h') + '.mp4';
+[steamA, steamB].forEach(v => { v.muted = true; v.addEventListener('playing', () => v.classList.add('on'), { once: true }); });
+if (!reduce) { vplay(steamA); vplay(steamB); }
+
+let AC = null, amb = null;
+const BUF = {};
+function ac() {
+  if (!AC) { const C = window.AudioContext || window.webkitAudioContext; if (!C) return null; try { AC = new C(); } catch (e) { return null; } }
+  if (AC.state === 'suspended' && AC.resume) AC.resume().catch(() => {});
+  return AC;
+}
+function buf(name) {
+  if (!BUF[name]) BUF[name] = fetch('vid/' + name + '.mp3').then(r => r.arrayBuffer()).then(a => new Promise((res, rej) => AC.decodeAudioData(a, res, rej)));
+  return BUF[name];
+}
+function sfx(name, vol) {
+  if (!ac()) return;
+  buf(name).then(b => { const src = AC.createBufferSource(), g = AC.createGain(); src.buffer = b; g.gain.value = vol; src.connect(g); g.connect(AC.destination); src.start(); }).catch(() => {});
+}
+addEventListener('pointerdown', () => { if (ac()) { buf('par').catch(() => {}); buf('treski').catch(() => {}); } }, { once: true, passive: true });
+const snd = $('#snd');
+snd.addEventListener('click', () => {
+  if (!ac()) return;
+  if (amb || snd.classList.contains('on')) {
+    const a = amb; amb = null; snd.classList.remove('on'); snd.setAttribute('aria-pressed', 'false');
+    if (a) { a.g.gain.setTargetAtTime(0, AC.currentTime, .25); setTimeout(() => { try { a.s.stop(); } catch (e) {} }, 1500); }
+    return;
+  }
+  snd.classList.add('on'); snd.setAttribute('aria-pressed', 'true');
+  buf('treski').then(b => {
+    if (!snd.classList.contains('on') || amb) return;
+    const src = AC.createBufferSource(), g = AC.createGain(); src.buffer = b; src.loop = true; g.gain.value = 0;
+    src.connect(g); g.connect(AC.destination); src.start(); g.gain.setTargetAtTime(.32, AC.currentTime, .4); amb = { s: src, g };
+  }).catch(() => {});
+});
+
+const parBtn = $('#parBtn'), tempEl = $('#tempV');
+let temp = 96, puffT = 0;
+function spawnBig() { if (P.length > 140) return; P.push({ x: SW * (.1 + Math.random() * .8), y: SH * (.8 + Math.random() * .3), r: 55 + Math.random() * 75, vx: (Math.random() - .5) * 30, vy: -(38 + Math.random() * 55), life: 0, max: 2.4 + Math.random() * 1.8, ph: Math.random() * 6.3, a: .2 + Math.random() * .08 }); }
+parBtn.addEventListener('click', () => {
+  heroEl.classList.add('puff'); clearTimeout(puffT); puffT = setTimeout(() => heroEl.classList.remove('puff'), 2300);
+  if (!reduce) for (let i = 0; i < 24; i++) spawnBig();
+  temp = Math.min(108, temp + 4); tempEl.textContent = temp;
+  const box = tempEl.parentNode; box.classList.remove('hot'); void box.offsetWidth; box.classList.add('hot');
+  sfx('par', .9);
+  try { if (navigator.vibrate) navigator.vibrate(35); } catch (e) {}
+});
+setInterval(() => { temp = temp > 97 ? temp - 1 : clamp(temp + (Math.random() < .5 ? -1 : 1), 94, 98); tempEl.textContent = temp; }, 2600);
 
 clearTimeout(window.__safe);
 })();
