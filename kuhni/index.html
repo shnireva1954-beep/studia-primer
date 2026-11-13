@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Кухни Пример · кухни на заказ в Чите (демо North Labs)</title>
+<meta name="description" content="Демо студии North Labs: страница под рекламу. QR-код с макета ведёт сюда, заявка приходит владельцу в Telegram с пометкой, откуда пришёл человек.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1e2225">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="North Labs">
+<meta property="og:title" content="Реклама, которую можно посчитать">
+<meta property="og:description" content="Демо North Labs: QR-код в лифте ведёт на страницу, заявка приходит владельцу в Telegram с пометкой, откуда пришёл человек.">
+<meta property="og:url" content="https://shnireva1954-beep.github.io/studia-primer/kuhni/">
+<meta property="og:image" content="https://shnireva1954-beep.github.io/studia-primer/kuhni/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231e2225'/%3E%3Cpath d='M9 23V9h14v14' fill='none' stroke='%23e3b574' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/manrope-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/hero.webp" as="image" fetchpriority="high">
+<script>
+// Появление блоков по прокрутке включается только при работающем скрипте:
+// без него страница видна целиком.
+document.documentElement.classList.add('js');
+</script>
+<style>
+/* Шрифт лежит рядом со страницей: чужих серверов страница не трогает совсем. */
+@font-face { font-family: Manrope; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url(fonts/manrope-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: Manrope; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url(fonts/manrope-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: Manrope; font-style: normal; font-weight: 400 800; font-display: swap;
+  src: url(fonts/manrope-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+:root {
+  --bg: #f4f1ea;
+  --paper: #fffdf9;
+  --ink: #1e2225;
+  --muted: #6b665e;
+  --line: #e6dfd3;
+  --graphite: #1e2225;
+  --graphite-2: #2c3237;
+  --oak: #b47a35;
+  --oak-deep: #8a5a1f;
+  --oak-soft: #f4e8d6;
+  --brass-1: #e6ba7b;
+  --brass-2: #c8924a;
+  --ok: #2f7d5b;
+  --tg: #2aabee;
+  --r: 20px;
+  --hdr: 60px;
+  --shadow: 0 1px 2px rgba(30,34,37,.06), 0 16px 40px -16px rgba(30,34,37,.24);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 500 16px/1.55 Manrope, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: .005em;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button, input { font: inherit; color: inherit; letter-spacing: inherit; }
+button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+h1, h2, h3 { margin: 0; font-weight: 800; line-height: 1.12; letter-spacing: .005em; }
+p { margin: 0; }
+[hidden] { display: none !important; }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+:focus-visible { outline: 3px solid var(--brass-1); outline-offset: 3px; border-radius: 8px; }
+
+/* Плашка демо */
+.demo-bar {
+  background: #14171a; color: #c9c4ba; font-size: 12px; line-height: 1.4; letter-spacing: .02em;
+  padding: 8px 16px; text-align: center;
+}
+.demo-bar b { color: var(--brass-1); font-weight: 700; }
+.demo-bar a { color: #fff; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+
+/* Шапка */
+.hdr {
+  position: sticky; top: 0; z-index: 40; height: var(--hdr);
+  display: flex; align-items: center; color: #fff;
+  transition: background .3s, color .3s, box-shadow .3s;
+}
+.hdr .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.hdr.scrolled { background: rgba(244,241,234,.92); color: var(--ink); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; font-size: 17px; }
+.logo-mark {
+  width: 34px; height: 34px; border-radius: 10px; background: var(--graphite); display: grid; place-items: center;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+}
+.logo-mark svg { width: 18px; height: 18px; }
+.logo small { display: block; font-weight: 600; font-size: 11px; opacity: .72; letter-spacing: .06em; text-transform: uppercase; line-height: 1.1; }
+.nav { display: none; gap: 26px; font-size: 14.5px; font-weight: 600; }
+.nav a { text-decoration: none; opacity: .86; }
+.nav a:hover { opacity: 1; }
+.hdr-btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 999px;
+  font-size: 14px; font-weight: 700; text-decoration: none;
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.hdr.scrolled .hdr-btn { background: var(--graphite); color: #fff; border-color: var(--graphite); }
+
+/* Первый экран */
+.hero {
+  position: relative; margin-top: calc(var(--hdr) * -1); color: #fff; background: var(--graphite);
+  min-height: 640px; min-height: min(88svh, 780px);
+  display: flex; align-items: flex-end; overflow: hidden; isolation: isolate;
+}
+.hero-media { position: absolute; inset: 0; z-index: -2; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; transform: scale(1.06); animation: drift 18s ease-out forwards; }
+@keyframes drift { to { transform: scale(1); } }
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(20,23,26,.56) 0%, rgba(20,23,26,.1) 20%, rgba(20,23,26,.34) 36%, rgba(20,23,26,.8) 54%, rgba(20,23,26,.94) 72%, rgba(20,23,26,.98) 100%);
+}
+.hero-in { padding-top: calc(var(--hdr) + 24px); padding-bottom: 30px; }
+.src-pill {
+  display: inline-flex; align-items: flex-start; gap: 10px; max-width: 100%;
+  padding: 10px 14px 10px 10px; margin-bottom: 18px; border-radius: 16px;
+  background: rgba(20,23,26,.5); border: 1px solid rgba(230,186,123,.55);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  font-size: 13.5px; line-height: 1.35; font-weight: 600;
+}
+.src-pill .ic { flex: none; width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(180deg, var(--brass-1), var(--brass-2)); display: grid; place-items: center; }
+.src-pill .ic svg { width: 17px; height: 17px; stroke: #1e2225; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.src-pill b { display: block; color: var(--brass-1); font-weight: 800; }
+.eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .86; margin-bottom: 12px; }
+.hero h1 { font-size: clamp(34px, 9.4vw, 62px); text-wrap: balance; }
+.hero h1 em { font-style: normal; color: var(--brass-1); white-space: nowrap; }
+.hero .lead { margin-top: 14px; font-size: 16.5px; line-height: 1.5; opacity: .92; max-width: 30em; }
+.hero-cta { display: grid; gap: 10px; margin-top: 22px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 0 24px;
+  border: 0; border-radius: 16px; font-weight: 800; font-size: 16px; text-decoration: none; text-align: center;
+  transition: transform .15s, box-shadow .2s, background .2s, opacity .2s;
+}
+.btn:active { transform: scale(.985); }
+.btn-accent { background: linear-gradient(180deg, var(--brass-1), var(--brass-2)); color: #1e2225; box-shadow: 0 10px 26px -10px rgba(200,146,74,.75), inset 0 1px 0 rgba(255,255,255,.45); }
+.btn-accent:disabled { opacity: .45; box-shadow: none; cursor: default; }
+.btn-glass { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.32); color: #fff; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.btn-dark { background: var(--graphite); color: #fff; }
+.btn-ghost { background: transparent; border: 1.5px solid var(--line); color: var(--ink); }
+.next { display: flex; align-items: center; gap: 10px; margin-top: 18px; font-size: 14px; font-weight: 600; opacity: .95; }
+.next i { width: 9px; height: 9px; border-radius: 50%; background: #6fdc9f; box-shadow: 0 0 0 0 rgba(111,220,159,.7); animation: pulse 2.2s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(111,220,159,0); } 100% { box-shadow: 0 0 0 0 rgba(111,220,159,0); } }
+
+/* Три факта */
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: -1px; padding: 22px 0 6px; }
+.fact { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 14px 12px; }
+.fact b { display: block; font-size: 22px; font-weight: 800; line-height: 1.1; }
+.fact span { display: block; margin-top: 4px; font-size: 12.5px; line-height: 1.3; color: var(--muted); letter-spacing: .02em; }
+
+/* Разделы */
+.blk { padding: 52px 0 8px; }
+.sec-head { margin-bottom: 22px; }
+.sec-head h2 { font-size: clamp(27px, 7vw, 40px); text-wrap: balance; }
+.sec-head p { margin-top: 10px; color: var(--muted); max-width: 34em; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); }
+
+/* Расчёт */
+.calc { display: grid; gap: 14px; }
+.calc-form { padding: 20px 18px 8px; }
+fieldset { border: 0; padding: 0; margin: 0 0 22px; min-width: 0; }
+legend { padding: 0; margin-bottom: 12px; font-weight: 800; font-size: 16px; width: 100%; display: flex; justify-content: space-between; align-items: baseline; }
+legend output { font-weight: 800; color: var(--oak-deep); font-size: 18px; }
+.tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.tile {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px; text-align: left;
+  background: var(--bg); border: 1.5px solid transparent; border-radius: 14px; font-weight: 700; font-size: 14.5px;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+}
+.tile svg { width: 46px; height: 34px; }
+.tile svg rect { fill: #cfc7b9; transition: fill .2s; }
+.tile.sel, .opt.sel { border-color: var(--oak); background: var(--oak-soft); box-shadow: 0 6px 18px -10px rgba(180,122,53,.6); }
+.tile.sel svg rect { fill: var(--oak); }
+.opts { display: grid; gap: 8px; }
+.opt {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 13px 14px; text-align: left;
+  background: var(--bg); border: 1.5px solid transparent; border-radius: 14px;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+}
+.opt b { display: block; font-weight: 700; font-size: 15px; }
+.opt small { display: block; color: var(--muted); font-size: 12.5px; letter-spacing: .02em; margin-top: 2px; }
+.opt .p { flex: none; font-weight: 700; font-size: 13.5px; color: var(--oak-deep); white-space: nowrap; }
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 34px; background: transparent; margin: 0; display: block; }
+input[type=range]::-webkit-slider-runnable-track { height: 6px; border-radius: 6px; background: linear-gradient(90deg, var(--oak) var(--p, 33%), #ddd5c7 var(--p, 33%)); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 30px; height: 30px; margin-top: -12px; border-radius: 50%; background: #fff; border: 2px solid var(--oak); box-shadow: 0 4px 12px rgba(30,34,37,.25); }
+input[type=range]::-moz-range-track { height: 6px; border-radius: 6px; background: #ddd5c7; }
+input[type=range]::-moz-range-progress { height: 6px; border-radius: 6px; background: var(--oak); }
+input[type=range]::-moz-range-thumb { width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 2px solid var(--oak); }
+.range-ends { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--muted); letter-spacing: .02em; margin-top: 2px; }
+
+.calc-res { background: var(--graphite); color: #fff; border-radius: var(--r); padding: 22px 20px; box-shadow: var(--shadow); }
+.calc-res .k { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; opacity: .7; }
+.calc-res .sum { margin-top: 8px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.calc-res .sum b { font-size: clamp(34px, 9.5vw, 44px); font-weight: 800; line-height: 1.05; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.calc-res .sum s { font-size: 17px; opacity: .55; white-space: nowrap; }
+.disc { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; background: rgba(230,186,123,.16); color: var(--brass-1); font-size: 13.5px; font-weight: 700; }
+.incl { list-style: none; padding: 0; margin: 16px 0 18px; display: grid; gap: 8px; font-size: 14.5px; opacity: .92; }
+.incl li { display: flex; gap: 10px; align-items: flex-start; }
+.incl li::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: 2px; border-radius: 50%; background: rgba(111,220,159,.18) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.3l2.6 2.6L13 6.6' fill='none' stroke='%236fdc9f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat; }
+.calc-res .btn { width: 100%; }
+.calc-res .fine { margin-top: 12px; font-size: 12.5px; opacity: .6; letter-spacing: .02em; text-align: center; }
+
+/* Работы */
+.works { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 20px 18px; margin: 0 -20px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.works::-webkit-scrollbar { display: none; }
+.work { position: relative; flex: none; width: 76%; max-width: 320px; aspect-ratio: 4 / 5; border-radius: var(--r); overflow: hidden; scroll-snap-align: center; background: #d9d2c6; box-shadow: var(--shadow); }
+.work img { width: 100%; height: 100%; object-fit: cover; }
+.work::after { content: ""; position: absolute; inset: 45% 0 0; background: linear-gradient(180deg, rgba(20,23,26,0), rgba(20,23,26,.86)); }
+.work figcaption { position: absolute; left: 16px; right: 16px; bottom: 14px; z-index: 1; color: #fff; }
+.work figcaption b { display: block; font-size: 19px; font-weight: 800; }
+.work figcaption span { display: block; font-size: 13px; opacity: .88; letter-spacing: .02em; margin-top: 2px; }
+figure { margin: 0; }
+
+/* Этапы */
+.steps { display: grid; gap: 10px; counter-reset: st; }
+.st { position: relative; padding: 18px 18px 18px 66px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; }
+.st::before { counter-increment: st; content: counter(st); position: absolute; left: 16px; top: 16px; width: 36px; height: 36px; border-radius: 12px; background: var(--graphite); color: var(--brass-1); display: grid; place-items: center; font-weight: 800; }
+.st h3 { font-size: 17px; }
+.st p { margin-top: 4px; color: var(--muted); font-size: 14.5px; }
+.st .t { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 700; letter-spacing: .04em; color: var(--oak-deep); background: var(--oak-soft); padding: 4px 10px; border-radius: 999px; }
+
+/* Запись на замер */
+.book { padding: 20px 18px 22px; scroll-margin-top: calc(var(--hdr) + 12px); }
+.book h3 { font-size: 17px; margin: 0 0 12px; }
+.book h3 + .days { margin-top: 0; }
+.days { display: flex; gap: 8px; overflow-x: auto; padding: 2px 18px 6px; margin: 0 -18px 12px; scrollbar-width: none; }
+.days::-webkit-scrollbar { display: none; }
+.day { flex: none; width: 64px; padding: 9px 0 8px; background: var(--bg); border: 1.5px solid transparent; border-radius: 14px; text-align: center; transition: border-color .2s, background .2s; }
+.day small { display: block; font-size: 11.5px; color: var(--muted); letter-spacing: .03em; }
+.day b { display: block; font-size: 19px; font-weight: 800; line-height: 1.25; }
+.day.sel { background: var(--graphite); color: #fff; border-color: var(--graphite); }
+.day.sel small { color: rgba(255,255,255,.7); }
+.slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 24px; }
+.slot { height: 46px; border-radius: 12px; background: var(--bg); border: 1.5px solid transparent; font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; transition: border-color .2s, background .2s, color .2s; }
+.slot.busy { opacity: .35; text-decoration: line-through; cursor: default; }
+.slot.sel { background: var(--oak); color: #fff; border-color: var(--oak); box-shadow: 0 8px 18px -10px rgba(180,122,53,.9); }
+.empty { grid-column: 1 / -1; padding: 14px; border-radius: 12px; background: var(--bg); color: var(--muted); font-size: 14.5px; }
+.fld { display: block; margin-bottom: 12px; }
+.fld span { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: .04em; color: var(--muted); margin-bottom: 6px; }
+.fld input { width: 100%; height: 54px; padding: 0 16px; border-radius: 14px; border: 1.5px solid var(--line); background: #fff; font-size: 17px; font-weight: 600; outline: none; transition: border-color .2s, box-shadow .2s; }
+.fld input::placeholder { color: #b3ab9e; font-weight: 500; }
+.fld input:focus { border-color: var(--oak); box-shadow: 0 0 0 4px rgba(180,122,53,.14); }
+.fld input.bad { border-color: #c2553d; }
+.agree { display: flex; gap: 12px; align-items: flex-start; font-size: 13.5px; color: var(--muted); line-height: 1.4; margin: 14px 0 18px; cursor: pointer; }
+.agree input { flex: none; width: 22px; height: 22px; margin: 0; accent-color: var(--oak); }
+.sumbox { background: var(--bg); border-radius: 14px; padding: 4px 14px; margin-bottom: 16px; }
+.sumbox div { display: flex; justify-content: space-between; gap: 14px; padding: 10px 0; font-size: 14.5px; border-bottom: 1px solid var(--line); }
+.sumbox div:last-child { border-bottom: 0; }
+.sumbox span { color: var(--muted); flex: none; }
+.sumbox b { font-weight: 700; text-align: right; }
+.sumbox .gift b { color: var(--oak-deep); }
+.book .btn { width: 100%; }
+.hint { margin-top: 10px; text-align: center; font-size: 13px; color: var(--muted); letter-spacing: .02em; min-height: 1.4em; }
+
+/* После отправки */
+.step { display: none; }
+.step.on { display: block; }
+.done-top { display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: center; margin-bottom: 16px; }
+.ok-ic { width: 52px; height: 52px; border-radius: 50%; background: #e2f1e9; display: grid; place-items: center; animation: pop .5s cubic-bezier(.2,1.4,.4,1) both; }
+.ok-ic svg { width: 26px; height: 26px; stroke: var(--ok); fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes pop { from { transform: scale(.4); opacity: 0; } }
+.done h3 { font-size: 21px; margin: 0; }
+.done-top p { margin-top: 4px; color: var(--muted); font-size: 14px; line-height: 1.4; }
+.done-grid { display: grid; gap: 12px; }
+.tg { text-align: left; background: #dfe9f2; border-radius: 18px; padding: 12px; animation: rise .6s .15s cubic-bezier(.2,.9,.3,1) both; }
+@keyframes rise { from { transform: translateY(18px); opacity: 0; } }
+.tg-head { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #4a5a68; padding: 2px 4px 10px; }
+.tg-head svg { width: 22px; height: 22px; flex: none; }
+.tg-head time { margin-left: auto; font-weight: 600; opacity: .7; }
+.tg-bub { background: #fff; border-radius: 14px 14px 14px 4px; padding: 12px 14px; font-size: 14.5px; line-height: 1.5; box-shadow: 0 1px 1px rgba(30,34,37,.08); }
+.tg-bub b { font-weight: 800; }
+.tg-bub .src { display: block; margin-top: 8px; padding: 8px 10px; border-radius: 10px; background: var(--oak-soft); color: #5a3a10; font-weight: 700; }
+.tg-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
+.tg-btns span { background: rgba(255,255,255,.66); border-radius: 10px; padding: 10px; text-align: center; font-size: 14px; font-weight: 700; color: #2481cc; }
+.rep { text-align: left; background: var(--graphite); color: #fff; border-radius: 18px; padding: 16px; animation: rise .6s .45s cubic-bezier(.2,.9,.3,1) both; }
+.rep-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 12px; }
+.rep-head b { font-size: 16px; font-weight: 800; white-space: nowrap; }
+.rep-head span { font-size: 12.5px; opacity: .65; letter-spacing: .04em; }
+.rr { display: grid; grid-template-columns: 126px 1fr 30px; align-items: center; gap: 10px; padding: 6px 0; font-size: 13.5px; }
+.rr .nm { white-space: nowrap; }
+.rr .bar { height: 10px; border-radius: 6px; background: rgba(255,255,255,.1); overflow: hidden; }
+.rr .bar i { display: block; height: 100%; width: 0; border-radius: 6px; background: rgba(255,255,255,.42); transition: width 1s .5s cubic-bezier(.2,.9,.3,1); }
+.rr b { text-align: right; font-variant-numeric: tabular-nums; font-weight: 800; }
+.rr.me { color: var(--brass-1); }
+.rr.me .bar i { background: linear-gradient(90deg, var(--brass-2), var(--brass-1)); }
+.rr.me .nm::after { content: " +1"; font-weight: 800; }
+.rep-note { margin-top: 10px; font-size: 12.5px; opacity: .7; letter-spacing: .02em; line-height: 1.45; }
+.done .btn { margin-top: 14px; }
+
+/* Вопросы */
+.faq { display: grid; gap: 8px; }
+details { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 0 18px; }
+summary { list-style: none; cursor: pointer; padding: 16px 30px 16px 0; font-weight: 700; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: ""; position: absolute; right: 2px; top: 50%; width: 10px; height: 10px; margin-top: -8px; border-right: 2px solid var(--oak); border-bottom: 2px solid var(--oak); transform: rotate(45deg); transition: transform .25s; }
+details[open] summary::after { transform: rotate(-135deg); margin-top: -2px; }
+details p { padding: 0 0 16px; color: var(--muted); font-size: 15px; }
+
+/* Контакты */
+.contacts { display: grid; gap: 10px; }
+.c-row { display: flex; gap: 14px; align-items: center; padding: 14px 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; }
+.c-row .ic { flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--oak-soft); display: grid; place-items: center; }
+.c-row .ic svg { width: 20px; height: 20px; stroke: var(--oak-deep); fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.c-row span { display: block; font-size: 12.5px; color: var(--muted); letter-spacing: .03em; }
+.c-row b { display: block; font-weight: 700; }
+
+/* Слой для рекламодателя и агентства */
+.how { margin-top: 56px; background: #14171a; color: #fff; padding: 46px 0 40px; position: relative; overflow: hidden; }
+.how::before { content: ""; position: absolute; left: 50%; top: -220px; width: 760px; height: 460px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(94,234,212,.2), rgba(56,189,248,.08) 60%, transparent); pointer-events: none; }
+.how .wrap { position: relative; }
+.how-top { display: grid; gap: 26px; }
+.poster { justify-self: center; width: 236px; }
+.po { position: relative; background: #fbfaf7; color: #14171a; border-radius: 6px; overflow: hidden; border: 7px solid #b9bec3; border-color: #d5d9dd #a9aeb4 #8f959b #c3c8cd; box-shadow: 0 30px 60px -24px rgba(0,0,0,.8), 0 0 0 1px rgba(0,0,0,.5); transform: rotate(-2.2deg); }
+.po::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,.34) 0%, rgba(255,255,255,0) 26%, rgba(255,255,255,0) 62%, rgba(255,255,255,.16) 100%); pointer-events: none; }
+.po-photo { aspect-ratio: 10 / 8; overflow: hidden; }
+.po-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.po-body { padding: 12px 14px 14px; }
+.po-brand { display: flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 800; letter-spacing: .03em; }
+.po-brand .logo-mark { width: 20px; height: 20px; border-radius: 6px; }
+.po-brand .logo-mark svg { width: 11px; height: 11px; }
+.po-h { margin-top: 9px; font-size: 23px; font-weight: 800; line-height: 1.08; }
+.po-off { display: inline-block; margin-top: 9px; padding: 5px 9px; border-radius: 7px; background: #1e2225; color: var(--brass-1); font-size: 11.5px; font-weight: 800; letter-spacing: .02em; }
+.po-qr { display: grid; grid-template-columns: 74px 1fr; gap: 11px; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e3ded4; font-size: 10.5px; line-height: 1.3; color: #5d584f; letter-spacing: .02em; }
+.po-qr .q { display: block; padding: 4px; background: #fff; border-radius: 6px; box-shadow: 0 0 0 2px var(--brass-2); }
+.po-qr .q svg { display: block; width: 100%; height: auto; }
+.po-qr b { display: block; font-size: 12.5px; color: #14171a; font-weight: 800; margin-bottom: 2px; letter-spacing: .005em; }
+.poster figcaption { margin-top: 16px; text-align: center; font-size: 12.5px; color: #8f979f; letter-spacing: .02em; }
+.rep-sample { margin: 0 0 26px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); animation: none; }
+.rep-sample .bar i { transition-delay: .1s; }
+.how .tag { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #5eead4; }
+.how .tag svg { width: 14px; height: 14px; fill: currentColor; }
+.how h2 { font-size: clamp(26px, 7vw, 38px); margin-top: 12px; text-wrap: balance; }
+.how .sub { margin-top: 12px; color: #b7bdc4; max-width: 36em; }
+.pts { display: grid; gap: 10px; margin: 24px 0 26px; }
+.pt { display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding: 16px; border-radius: 16px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); }
+.pt .n { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #5eead4, #38bdf8); color: #0b1418; display: grid; place-items: center; font-weight: 800; }
+.pt h3 { font-size: 16.5px; }
+.pt p { margin-top: 4px; color: #b7bdc4; font-size: 14.5px; }
+.try { font-weight: 700; margin-bottom: 12px; }
+.qrs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.qr { display: block; text-decoration: none; padding: 10px 10px 12px; border-radius: 16px; background: #fff; color: #14171a; text-align: center; border: 2px solid transparent; transition: transform .2s, border-color .2s, box-shadow .2s; }
+.qr svg { width: 100%; height: auto; display: block; }
+.qr b { display: block; margin-top: 8px; font-size: 13px; font-weight: 800; line-height: 1.2; }
+.qr.sel { border-color: #5eead4; box-shadow: 0 0 0 4px rgba(94,234,212,.22); }
+.made { margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.1); display: grid; gap: 14px; }
+.made-top { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; }
+.made-top svg { width: 20px; height: 20px; fill: #5eead4; }
+.made p { color: #b7bdc4; font-size: 14.5px; }
+.made a { color: #fff; font-weight: 700; text-underline-offset: 3px; }
+
+/* Кнопка внизу экрана на телефоне */
+.mob-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: linear-gradient(180deg, rgba(244,241,234,0), rgba(244,241,234,.96) 34%); transition: transform .3s, opacity .3s; }
+.mob-cta.hide { transform: translateY(110%); opacity: 0; pointer-events: none; }
+.mob-cta .btn { width: 100%; min-height: 54px; }
+
+/* Появление по прокрутке */
+.js .rv { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1); }
+.js .rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .rv { opacity: 1; transform: none; transition: none; }
+  .hero-media img, .next i, .ok-ic, .tg, .rep { animation: none; }
+}
+[id] { scroll-margin-top: calc(var(--hdr) + 12px); }
+
+/* Планшет и компьютер */
+@media (min-width: 700px) {
+  .wrap { padding: 0 32px; }
+  .hero-cta { grid-template-columns: auto auto; justify-content: start; }
+  .facts { gap: 14px; }
+  .fact { padding: 18px 20px; }
+  .fact b { font-size: 28px; }
+  .fact span { font-size: 14px; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .tiles { grid-template-columns: repeat(4, 1fr); }
+  .opts { grid-template-columns: repeat(3, 1fr); }
+  .opt { flex-direction: column; align-items: flex-start; }
+  .works { margin: 0 -32px; padding: 4px 32px 18px; }
+  .work { width: 300px; }
+  .slots { grid-template-columns: repeat(6, 1fr); }
+  .contacts { grid-template-columns: repeat(3, 1fr); }
+  .pts { grid-template-columns: repeat(3, 1fr); }
+  .pt { grid-template-columns: 1fr; align-content: start; }
+  .qrs { max-width: 560px; gap: 14px; }
+  .mob-cta { display: none; }
+  .faq { grid-template-columns: repeat(2, 1fr); align-items: start; }
+}
+@media (min-width: 960px) {
+  .nav { display: flex; }
+  .hero { min-height: 680px; align-items: center; }
+  .hero-media { left: 46%; }
+  .hero-media img { object-position: 50% 62%; }
+  .hero::after { background: linear-gradient(90deg, #1e2225 0%, #1e2225 46%, rgba(30,34,37,.72) 56%, rgba(30,34,37,.08) 78%, rgba(30,34,37,0) 100%); }
+  .hero-in { padding-top: calc(var(--hdr) + 40px); padding-bottom: 56px; }
+  .hero-in > * { max-width: 520px; }
+  .hero h1 { font-size: 58px; }
+  .blk { padding-top: 84px; }
+  .calc { grid-template-columns: 1.35fr 1fr; align-items: start; gap: 20px; }
+  .calc-form { padding: 28px 28px 10px; }
+  .calc-res { position: sticky; top: calc(var(--hdr) + 16px); padding: 28px; }
+  .steps { grid-template-columns: repeat(4, 1fr); }
+  .st { padding: 70px 20px 20px; }
+  .book { padding: 30px; max-width: 820px; }
+  .done-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+  .days { margin: 0 0 12px; padding: 2px 0 6px; }
+  .how { margin-top: 90px; padding: 72px 0 56px; }
+  .how-top { grid-template-columns: 1fr auto; align-items: center; gap: 60px; }
+  .poster { width: 270px; margin-right: 40px; }
+  .rep-sample { max-width: 560px; }
+  .made { grid-template-columns: 1fr auto; align-items: center; }
+}
+</style>
+</head>
+<body>
+<div class="demo-bar"><b>Демо North Labs.</b> Фирма вымышленная. Запишитесь на замер и увидите, что получит владелец. <a href="#kak">Как это устроено</a></div>
+
+<header class="hdr" id="top">
+  <div class="wrap">
+    <a class="logo" href="#glavnaya" aria-label="Кухни Пример, в начало">
+      <span class="logo-mark"><svg viewBox="0 0 18 18"><path d="M3.5 15V3.5h11V15" fill="none" stroke="#e6ba7b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span>Кухни Пример<small>на заказ в Чите</small></span>
+    </a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#raschet">Расчёт</a><a href="#raboty">Работы</a><a href="#etapy">Этапы</a><a href="#voprosy">Вопросы</a>
+    </nav>
+    <a class="hdr-btn" href="#zamer">Замер</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="glavnaya">
+  <div class="hero-media"><img src="img/hero.webp" width="1080" height="1350" alt="Угловая кухня с графитовыми фасадами и светлой столешницей" fetchpriority="high"></div>
+  <div class="wrap hero-in">
+    <div class="src-pill" id="srcPill" hidden>
+      <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 18h2v2h-2zM18 14h2M14 18v2"/></svg></span>
+      <span><span id="srcHello"></span><b id="srcOffer"></b></span>
+    </div>
+    <p class="eyebrow">Кухни на заказ в Чите</p>
+    <h1>Кухня под вашу планировку <em>за 21 день</em></h1>
+    <p class="lead">Замер и 3D-проект бесплатно. Своё производство в&nbsp;Чите, гарантия 5&nbsp;лет.</p>
+    <div class="hero-cta">
+      <a class="btn btn-accent" href="#raschet">Рассчитать стоимость</a>
+      <a class="btn btn-glass" href="#zamer">Записаться на замер</a>
+    </div>
+    <div class="next"><i></i><span id="heroNext">Замер бесплатно, в удобное время</span></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="facts">
+    <div class="fact rv"><b>21 день</b><span>от замера до монтажа</span></div>
+    <div class="fact rv"><b>5 лет</b><span>гарантия по договору</span></div>
+    <div class="fact rv"><b>0 ₽</b><span>замер и 3D-проект</span></div>
+  </div>
+</div>
+
+<section class="blk" id="raschet">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Сколько стоит ваша кухня</h2><p>Четыре вопроса, и цена видна сразу. Точную назовём после бесплатного замера.</p></div>
+    <div class="calc">
+      <div class="calc-form card rv">
+        <fieldset>
+          <legend>Форма кухни</legend>
+          <div class="tiles" id="qShape">
+            <button type="button" class="tile" data-v="pryamaya"><svg viewBox="0 0 46 34"><rect x="2" y="3" width="42" height="9" rx="2"/></svg>Прямая</button>
+            <button type="button" class="tile" data-v="uglovaya"><svg viewBox="0 0 46 34"><rect x="2" y="3" width="42" height="9" rx="2"/><rect x="2" y="3" width="9" height="28" rx="2"/></svg>Угловая</button>
+            <button type="button" class="tile" data-v="p"><svg viewBox="0 0 46 34"><rect x="2" y="3" width="42" height="9" rx="2"/><rect x="2" y="3" width="9" height="28" rx="2"/><rect x="35" y="3" width="9" height="28" rx="2"/></svg>П-образная</button>
+            <button type="button" class="tile" data-v="ostrov"><svg viewBox="0 0 46 34"><rect x="2" y="3" width="42" height="9" rx="2"/><rect x="11" y="20" width="24" height="10" rx="2"/></svg>С островом</button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend><label for="qLen">Длина по стенам</label><output id="lenOut" for="qLen">3,2 м</output></legend>
+          <input type="range" id="qLen" min="1.8" max="6" step="0.1" value="3.2" aria-valuetext="3,2 метра">
+          <div class="range-ends"><span>1,8 м</span><span>6 м</span></div>
+        </fieldset>
+        <fieldset>
+          <legend>Фасады</legend>
+          <div class="opts" id="qFas">
+            <button type="button" class="opt" data-v="pvh"><span><b>Плёнка ПВХ</b><small>практично, сотни оттенков</small></span><span class="p">от 32 000 ₽/м</span></button>
+            <button type="button" class="opt" data-v="emal"><span><b>Эмаль</b><small>матовая или глянец, любой цвет</small></span><span class="p">от 46 000 ₽/м</span></button>
+            <button type="button" class="opt" data-v="shpon"><span><b>Шпон дуба</b><small>живое дерево под маслом</small></span><span class="p">от 64 000 ₽/м</span></button>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Столешница</legend>
+          <div class="opts" id="qTop">
+            <button type="button" class="opt" data-v="plastik"><span><b>Пластик</b><small>влагостойкая, 38 мм</small></span><span class="p">в цене</span></button>
+            <button type="button" class="opt" data-v="kamen"><span><b>Искусственный камень</b><small>без швов, с бортиком</small></span><span class="p">+ 9 000 ₽/м</span></button>
+            <button type="button" class="opt" data-v="kvarc"><span><b>Кварц</b><small>не боится горячего</small></span><span class="p">+ 16 000 ₽/м</span></button>
+          </div>
+        </fieldset>
+      </div>
+      <aside class="calc-res rv" aria-live="polite">
+        <span class="k">Предварительно</span>
+        <div class="sum"><b id="price">от 190 000 ₽</b><s id="oldPrice" hidden></s></div>
+        <div class="disc" id="discLine" hidden></div>
+        <ul class="incl">
+          <li>замер и 3D-проект бесплатно</li>
+          <li>доставка, подъём и монтаж в цене</li>
+          <li>рассрочка на 6 месяцев без переплаты</li>
+        </ul>
+        <a class="btn btn-accent" href="#zamer">Закрепить цену и записаться</a>
+        <p class="fine">Расчёт сохранится в заявке</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="raboty">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Кухни, которые мы сделали</h2><p>Цена с монтажом и столешницей. Листайте.</p></div>
+    <div class="works rv">
+      <figure class="work"><img src="img/g1.webp" width="720" height="900" loading="lazy" alt="Белая кухня с островом и деревянными стульями"><figcaption><b>348 000 ₽</b><span>с островом · 4,6 м · эмаль, кварц</span></figcaption></figure>
+      <figure class="work"><img src="img/g2.webp" width="720" height="900" loading="lazy" alt="Тёмная глянцевая кухня с мраморной столешницей"><figcaption><b>254 000 ₽</b><span>угловая · 3,8 м · эмаль, кварц</span></figcaption></figure>
+      <figure class="work"><img src="img/g3.webp" width="720" height="900" loading="lazy" alt="Светлая кухня с деревянными верхними шкафами"><figcaption><b>192 000 ₽</b><span>прямая · 3,0 м · шпон дуба</span></figcaption></figure>
+      <figure class="work"><img src="img/g4.webp" width="720" height="900" loading="lazy" alt="Кухня с серо-бежевыми фасадами и латунным смесителем"><figcaption><b>266 000 ₽</b><span>П-образная · 4,2 м · эмаль, камень</span></figcaption></figure>
+      <figure class="work"><img src="img/g5.webp" width="720" height="900" loading="lazy" alt="Белая кухня с деревянным островом"><figcaption><b>508 000 ₽</b><span>с островом · 5,2 м · шпон, кварц</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="etapy">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Четыре шага до готовой кухни</h2></div>
+    <div class="steps">
+      <div class="st rv"><h3>Замер</h3><p>Приедем в удобное время, снимем размеры, покажем образцы фасадов и столешниц.</p><span class="t">бесплатно, 40 минут</span></div>
+      <div class="st rv"><h3>3D-проект</h3><p>Покажем кухню в вашей планировке. Правим, пока не понравится.</p><span class="t">2 дня</span></div>
+      <div class="st rv"><h3>Производство</h3><p>Делаем на своём производстве в Чите, фурнитура с доводчиками.</p><span class="t">14 дней</span></div>
+      <div class="st rv"><h3>Монтаж</h3><p>Привезём, поднимем, соберём и подключим технику. Мусор заберём с собой.</p><span class="t">1 день</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="zamer">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Запись на замер</h2><p>Выберите время, когда вы дома. Замер бесплатный и ни к чему не обязывает.</p></div>
+    <div class="book card rv">
+      <div class="step on" data-step="1">
+        <h3>Когда вам удобно?</h3>
+        <div class="days" id="days" role="group" aria-label="День замера"></div>
+        <div class="slots" id="slots" role="group" aria-label="Время замера"></div>
+        <h3>Как с вами связаться?</h3>
+        <label class="fld"><span>Имя</span><input id="nm" autocomplete="given-name" maxlength="40" placeholder="Как к вам обращаться"></label>
+        <label class="fld"><span>Телефон</span><input id="ph" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00"></label>
+        <label class="agree"><input type="checkbox" id="agree"><span>Согласен на обработку персональных данных</span></label>
+        <div class="sumbox">
+          <div><span>Замер</span><b id="sWhen">не выбран</b></div>
+          <div><span>Кухня</span><b id="sKit"></b></div>
+          <div><span>Предварительно</span><b id="sPrice"></b></div>
+          <div class="gift" id="sBonusRow" hidden><span id="sBonusK"></span><b id="sBonus"></b></div>
+        </div>
+        <button type="button" class="btn btn-accent" id="send" disabled>Записаться на замер</button>
+        <p class="hint" id="hint">Выберите время замера</p>
+      </div>
+      <div class="step" data-step="2">
+        <div class="done">
+          <div class="done-top">
+            <div class="ok-ic"><svg viewBox="0 0 30 30"><path d="M7 15.5l5.5 5.5L23 10"/></svg></div>
+            <div><h3>Готово, вы записаны</h3><p>Это демо: заявка никуда не ушла. Вот что в эту секунду получил бы владелец.</p></div>
+          </div>
+          <div class="done-grid">
+          <div class="tg">
+            <div class="tg-head"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#2aabee"/><path d="M5.4 11.7l11.3-4.4c.5-.2 1 .1.8.9l-1.9 9c-.1.7-.6.8-1.1.5l-3-2.2-1.4 1.4c-.2.2-.3.3-.6.3l.2-3.1 5.600-5.100c.2-.2 0-.3-.4-.1l-6.900 4.400-3-.9c-.6-.2-.7-.6.4-1z" fill="#fff"/></svg><span>Telegram владельца</span><time>сейчас</time></div>
+            <div class="tg-bub" id="tgMsg"></div>
+            <div class="tg-btns"><span>Подтвердить</span><span>Отменить</span></div>
+          </div>
+          <div class="rep">
+            <div class="rep-head"><b>Заявки по рекламе</b><span id="repMonth"></span></div>
+            <div id="repRows"></div>
+            <p class="rep-note">Такой итог видят владелец и агентство: какая реклама привела людей, а какая нет.</p>
+          </div>
+          </div>
+          <button type="button" class="btn btn-ghost" id="again">Записаться ещё раз</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="voprosy">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Частые вопросы</h2></div>
+    <div class="faq">
+      <details class="rv"><summary>Замер правда бесплатный?</summary><p>Да. Замерщик приедет, снимет размеры и покажет образцы. Если кухню не закажете, платить ничего не нужно.</p></details>
+      <details class="rv"><summary>Можно в рассрочку?</summary><p>Да, на 6 месяцев без переплаты: половина при заказе, остальное равными частями.</p></details>
+      <details class="rv"><summary>Квартира в новостройке без отделки. Когда звать?</summary><p>Когда готовы стены и пол на кухне. Проект можно сделать раньше, по плану квартиры.</p></details>
+      <details class="rv"><summary>Технику встраиваете?</summary><p>Да, свою или вашу. Размеры под технику закладываем на этапе проекта.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="kontakty">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>Контакты</h2><p>Адрес и телефон вымышленные.</p></div>
+    <div class="contacts">
+      <div class="c-row rv"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.500C5 14.800 12 21 12 21z"/><circle cx="12" cy="9.500" r="2.500"/></svg></span><div><span>Шоурум</span><b>Чита, ул. Примерная, 12</b></div></div>
+      <div class="c-row rv"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><div><span>Телефон</span><b>+7 900 000-00-00</b></div></div>
+      <div class="c-row rv"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><span>Каждый день</span><b>с 10:00 до 20:00</b></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="how" id="kak">
+  <div class="wrap">
+    <div class="how-top">
+      <div>
+        <span class="tag"><svg viewBox="0 0 24 24"><path d="M12 1l2.200 8.800L23 12l-8.800 2.200L12 23l-2.200-8.800L1 12l8.800-2.200z"/></svg>North Labs · как это устроено</span>
+        <h2>Эта страница сделана под рекламу</h2>
+        <p class="sub">Так мы собираем страницы для рекламодателей. На макете стоит QR-код: человек наводит камеру и попадает сюда, а не ищет фирму в поиске.</p>
+      </div>
+      <figure class="poster">
+        <div class="po">
+          <div class="po-photo"><img src="img/g2.webp" width="720" height="900" loading="lazy" alt=""></div>
+          <div class="po-body">
+            <div class="po-brand"><span class="logo-mark"><svg viewBox="0 0 18 18"><path d="M3.5 15V3.5h11V15" fill="none" stroke="#e6ba7b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Кухни Пример</div>
+            <div class="po-h">Кухня за 21 день</div>
+            <div class="po-off">−10% жильцам этого дома</div>
+            <div class="po-qr"><span class="q"><svg role="img" aria-label="QR-код на макете" viewBox="0 0 37 37" class="segno"><path class="qrline" stroke="#14171a" d="M0 0.5h7m1 0h2m4 0h1m4 0h5m1 0h1m2 0h1m1 0h7m-37 1h1m5 0h1m1 0h4m1 0h3m2 0h2m3 0h4m1 0h1m1 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m1 0h2m3 0h4m2 0h1m1 0h3m1 0h3m2 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m7 0h1m1 0h2m2 0h4m1 0h4m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h4m3 0h2m1 0h2m1 0h1m3 0h1m2 0h1m1 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m2 0h2m1 0h3m7 0h2m2 0h1m1 0h1m1 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-28 1h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m2 0h1m1 0h2m-29 1h1m2 0h8m1 0h1m8 0h2m3 0h4m2 0h1m1 0h3m-37 1h2m7 0h1m1 0h4m1 0h3m2 0h1m2 0h1m1 0h2m1 0h1m1 0h2m1 0h2m-35 1h1m2 0h3m2 0h3m3 0h2m2 0h2m1 0h2m2 0h6m1 0h2m1 0h1m-34 1h1m6 0h4m2 0h2m1 0h2m1 0h3m1 0h2m4 0h5m-37 1h1m2 0h1m2 0h2m4 0h1m2 0h2m1 0h1m1 0h1m2 0h2m1 0h1m3 0h1m2 0h1m2 0h1m-37 1h1m2 0h3m2 0h2m3 0h4m1 0h1m1 0h2m1 0h1m3 0h2m3 0h2m1 0h1m-34 1h1m1 0h3m3 0h2m3 0h1m2 0h2m5 0h3m1 0h2m1 0h5m-35 1h1m1 0h1m5 0h2m1 0h2m1 0h1m2 0h4m3 0h1m2 0h3m1 0h2m1 0h1m-37 1h2m1 0h1m1 0h2m1 0h2m1 0h1m1 0h2m2 0h2m2 0h5m1 0h2m1 0h1m3 0h3m-37 1h1m2 0h3m1 0h2m1 0h4m8 0h2m1 0h1m1 0h3m1 0h1m-30 1h1m2 0h2m3 0h1m1 0h1m1 0h1m1 0h1m2 0h1m4 0h4m1 0h1m4 0h1m1 0h1m-37 1h3m6 0h1m2 0h2m1 0h2m2 0h2m1 0h2m1 0h1m1 0h2m1 0h1m2 0h1m2 0h1m-37 1h1m4 0h3m2 0h1m2 0h2m1 0h2m1 0h1m3 0h2m3 0h6m-34 1h1m2 0h3m1 0h2m1 0h4m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m4 0h1m1 0h2m-36 1h1m4 0h7m1 0h3m5 0h1m1 0h2m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1m-37 1h1m2 0h1m7 0h1m2 0h1m3 0h1m1 0h1m3 0h1m1 0h9m1 0h1m-36 1h3m2 0h4m4 0h2m1 0h1m1 0h6m2 0h2m1 0h2m-32 1h3m1 0h1m3 0h1m1 0h3m5 0h2m1 0h2m1 0h4m3 0h4m-35 1h3m3 0h2m1 0h2m1 0h1m2 0h1m1 0h2m2 0h2m1 0h4m1 0h1m1 0h2m1 0h3m-37 1h1m1 0h3m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m4 0h1m3 0h1m3 0h4m-36 1h1m1 0h2m1 0h6m2 0h3m3 0h1m2 0h5m1 0h7m-27 1h1m1 0h2m3 0h1m1 0h1m1 0h3m4 0h3m3 0h1m1 0h2m-36 1h7m1 0h2m5 0h1m1 0h4m2 0h1m4 0h1m1 0h1m1 0h1m2 0h2m-37 1h1m5 0h1m1 0h1m3 0h1m3 0h1m2 0h3m3 0h4m3 0h1m2 0h2m-37 1h1m1 0h3m1 0h1m1 0h4m1 0h4m1 0h1m1 0h2m1 0h2m1 0h7m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h2m5 0h1m1 0h1m1 0h1m2 0h4m2 0h3m-36 1h1m1 0h3m1 0h1m3 0h1m1 0h1m4 0h1m3 0h4m2 0h3m2 0h1m2 0h2m-37 1h1m5 0h1m5 0h1m1 0h2m1 0h2m3 0h2m8 0h5m-37 1h7m1 0h2m2 0h2m5 0h2m2 0h2m1 0h1m1 0h2m1 0h1m4 0h1"/></svg></span><span><b>Наведите камеру</b>цена вашей кухни за минуту</span></div>
+          </div>
+        </div>
+        <figcaption>Макет в лифте. Код ведёт на эту страницу.</figcaption>
+      </figure>
+    </div>
+    <div class="pts">
+      <div class="pt"><span class="n">1</span><div><h3>У каждой площадки свой код</h3><p>Лифты, экраны в супермаркетах, соцсети. Страница понимает, откуда пришёл человек, и показывает ему своё предложение.</p></div></div>
+      <div class="pt"><span class="n">2</span><div><h3>Заявка сразу в Telegram</h3><p>Владелец получает имя, телефон и время. В заявке написано, с какой рекламы она пришла.</p></div></div>
+      <div class="pt"><span class="n">3</span><div><h3>Рекламу можно посчитать</h3><p>В любой момент видно, сколько заявок дали лифты, а сколько супермаркеты. Рядом с фотоотчётом появляются цифры.</p></div></div>
+    </div>
+    <div class="rep rep-sample">
+      <div class="rep-head"><b>Заявки по рекламе</b><span id="repMonth2"></span></div>
+      <div id="repRows2"></div>
+      <p class="rep-note">Числа для примера. У рекламодателя здесь его настоящие заявки.</p>
+    </div>
+    <p class="try">Нажмите на код: страница откроется так, как её видит человек с этой рекламы.</p>
+    <div class="qrs">
+      <a class="qr" href="?m=lift" data-m="lift"><svg role="img" aria-label="QR-код: lift" viewBox="0 0 39 39" class="segno"><path class="qrline" stroke="#14171a" d="M1 1.5h7m1 0h2m4 0h1m4 0h5m1 0h1m2 0h1m1 0h7m-37 1h1m5 0h1m1 0h4m1 0h3m2 0h2m3 0h4m1 0h1m1 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m1 0h2m3 0h4m2 0h1m1 0h3m1 0h3m2 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m7 0h1m1 0h2m2 0h4m1 0h4m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h4m3 0h2m1 0h2m1 0h1m3 0h1m2 0h1m1 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m2 0h2m1 0h3m7 0h2m2 0h1m1 0h1m1 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-28 1h1m1 0h1m1 0h1m1 0h1m1 0h2m3 0h1m2 0h1m1 0h2m-29 1h1m2 0h8m1 0h1m8 0h2m3 0h4m2 0h1m1 0h3m-37 1h2m7 0h1m1 0h4m1 0h3m2 0h1m2 0h1m1 0h2m1 0h1m1 0h2m1 0h2m-35 1h1m2 0h3m2 0h3m3 0h2m2 0h2m1 0h2m2 0h6m1 0h2m1 0h1m-34 1h1m6 0h4m2 0h2m1 0h2m1 0h3m1 0h2m4 0h5m-37 1h1m2 0h1m2 0h2m4 0h1m2 0h2m1 0h1m1 0h1m2 0h2m1 0h1m3 0h1m2 0h1m2 0h1m-37 1h1m2 0h3m2 0h2m3 0h4m1 0h1m1 0h2m1 0h1m3 0h2m3 0h2m1 0h1m-34 1h1m1 0h3m3 0h2m3 0h1m2 0h2m5 0h3m1 0h2m1 0h5m-35 1h1m1 0h1m5 0h2m1 0h2m1 0h1m2 0h4m3 0h1m2 0h3m1 0h2m1 0h1m-37 1h2m1 0h1m1 0h2m1 0h2m1 0h1m1 0h2m2 0h2m2 0h5m1 0h2m1 0h1m3 0h3m-37 1h1m2 0h3m1 0h2m1 0h4m8 0h2m1 0h1m1 0h3m1 0h1m-30 1h1m2 0h2m3 0h1m1 0h1m1 0h1m1 0h1m2 0h1m4 0h4m1 0h1m4 0h1m1 0h1m-37 1h3m6 0h1m2 0h2m1 0h2m2 0h2m1 0h2m1 0h1m1 0h2m1 0h1m2 0h1m2 0h1m-37 1h1m4 0h3m2 0h1m2 0h2m1 0h2m1 0h1m3 0h2m3 0h6m-34 1h1m2 0h3m1 0h2m1 0h4m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m4 0h1m1 0h2m-36 1h1m4 0h7m1 0h3m5 0h1m1 0h2m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1m-37 1h1m2 0h1m7 0h1m2 0h1m3 0h1m1 0h1m3 0h1m1 0h9m1 0h1m-36 1h3m2 0h4m4 0h2m1 0h1m1 0h6m2 0h2m1 0h2m-32 1h3m1 0h1m3 0h1m1 0h3m5 0h2m1 0h2m1 0h4m3 0h4m-35 1h3m3 0h2m1 0h2m1 0h1m2 0h1m1 0h2m2 0h2m1 0h4m1 0h1m1 0h2m1 0h3m-37 1h1m1 0h3m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h1m4 0h1m3 0h1m3 0h4m-36 1h1m1 0h2m1 0h6m2 0h3m3 0h1m2 0h5m1 0h7m-27 1h1m1 0h2m3 0h1m1 0h1m1 0h3m4 0h3m3 0h1m1 0h2m-36 1h7m1 0h2m5 0h1m1 0h4m2 0h1m4 0h1m1 0h1m1 0h1m2 0h2m-37 1h1m5 0h1m1 0h1m3 0h1m3 0h1m2 0h3m3 0h4m3 0h1m2 0h2m-37 1h1m1 0h3m1 0h1m1 0h4m1 0h4m1 0h1m1 0h2m1 0h2m1 0h7m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h2m5 0h1m1 0h1m1 0h1m2 0h4m2 0h3m-36 1h1m1 0h3m1 0h1m3 0h1m1 0h1m4 0h1m3 0h4m2 0h3m2 0h1m2 0h2m-37 1h1m5 0h1m5 0h1m1 0h2m1 0h2m3 0h2m8 0h5m-37 1h7m1 0h2m2 0h2m5 0h2m2 0h2m1 0h1m1 0h2m1 0h1m4 0h1"/></svg><b>Лифт</b></a>
+      <a class="qr" href="?m=market" data-m="market"><svg role="img" aria-label="QR-код: market" viewBox="0 0 39 39" class="segno"><path class="qrline" stroke="#14171a" d="M1 1.5h7m1 0h1m2 0h3m1 0h1m1 0h1m1 0h2m4 0h1m1 0h1m2 0h7m-37 1h1m5 0h1m2 0h4m1 0h1m3 0h2m3 0h4m1 0h1m1 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m4 0h1m2 0h5m2 0h2m1 0h1m1 0h2m2 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h3m3 0h1m3 0h1m3 0h1m1 0h2m2 0h1m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m1 0h4m4 0h1m3 0h2m1 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h2m4 0h1m4 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-29 1h1m1 0h2m1 0h2m1 0h1m2 0h3m1 0h2m1 0h1m-27 1h1m3 0h1m1 0h4m1 0h1m4 0h1m3 0h1m3 0h1m4 0h5m2 0h1m-37 1h1m1 0h1m1 0h2m1 0h2m1 0h1m6 0h3m1 0h2m1 0h6m2 0h1m2 0h1m-34 1h2m1 0h3m1 0h1m1 0h2m2 0h1m2 0h2m3 0h1m3 0h1m1 0h1m1 0h3m-34 1h1m1 0h1m2 0h1m3 0h3m2 0h10m2 0h1m3 0h1m1 0h1m1 0h2m-30 1h3m1 0h1m1 0h2m3 0h2m1 0h3m1 0h1m1 0h5m3 0h3m-36 1h1m1 0h1m5 0h1m5 0h2m1 0h1m1 0h2m1 0h1m3 0h2m3 0h2m1 0h1m-36 1h1m2 0h1m1 0h3m1 0h2m1 0h2m1 0h1m1 0h1m5 0h2m1 0h2m3 0h4m-32 1h2m5 0h1m2 0h1m1 0h5m2 0h3m1 0h2m3 0h2m1 0h2m-36 1h1m1 0h1m3 0h1m6 0h1m1 0h1m2 0h2m2 0h1m1 0h1m3 0h4m1 0h2m1 0h1m-36 1h3m3 0h4m5 0h2m1 0h2m3 0h1m1 0h2m4 0h1m1 0h2m-35 1h1m4 0h5m2 0h2m1 0h1m1 0h1m1 0h1m2 0h1m3 0h1m1 0h4m1 0h1m-35 1h1m1 0h2m8 0h1m1 0h1m2 0h2m2 0h1m1 0h2m1 0h1m2 0h1m1 0h2m1 0h2m-36 1h1m1 0h6m3 0h1m2 0h2m1 0h1m1 0h4m1 0h1m1 0h2m1 0h3m2 0h1m-35 1h3m1 0h1m2 0h2m2 0h1m1 0h1m1 0h3m5 0h1m1 0h1m1 0h2m2 0h2m2 0h1m-33 1h1m1 0h2m1 0h2m2 0h1m2 0h2m1 0h1m1 0h4m3 0h8m-31 1h1m2 0h1m2 0h1m2 0h3m4 0h2m4 0h1m1 0h2m1 0h2m1 0h1m-33 1h2m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h2m8 0h3m1 0h3m-36 1h1m1 0h3m2 0h4m1 0h3m3 0h2m1 0h3m1 0h1m1 0h1m3 0h4m-33 1h1m1 0h4m2 0h1m1 0h2m1 0h1m3 0h1m1 0h4m1 0h2m2 0h1m1 0h1m1 0h1m-28 1h1m1 0h2m4 0h7m1 0h2m1 0h5m3 0h1m-35 1h2m1 0h2m1 0h3m4 0h1m3 0h1m3 0h2m1 0h1m1 0h7m1 0h1m1 0h1m-29 1h5m1 0h3m4 0h3m1 0h1m1 0h2m3 0h1m-33 1h7m1 0h2m2 0h4m1 0h1m5 0h3m2 0h1m1 0h1m1 0h1m2 0h1m-36 1h1m5 0h1m2 0h1m1 0h1m1 0h3m1 0h2m3 0h3m3 0h1m3 0h3m-35 1h1m1 0h3m1 0h1m1 0h1m2 0h2m5 0h1m3 0h3m3 0h7m1 0h1m-37 1h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h1m1 0h1m2 0h2m2 0h1m1 0h3m1 0h3m1 0h1m2 0h1m-37 1h1m1 0h3m1 0h1m4 0h2m3 0h3m1 0h2m1 0h2m1 0h2m1 0h2m3 0h1m-35 1h1m5 0h1m2 0h1m4 0h1m2 0h1m3 0h2m4 0h1m2 0h1m1 0h1m1 0h2m-36 1h7m1 0h1m1 0h1m4 0h3m1 0h6m1 0h2m3 0h1m1 0h4"/></svg><b>Супермаркет</b></a>
+      <a class="qr" href="?m=vk" data-m="vk"><svg role="img" aria-label="QR-код: vk" viewBox="0 0 39 39" class="segno"><path class="qrline" stroke="#14171a" d="M1 1.5h7m4 0h1m1 0h2m1 0h2m3 0h1m4 0h1m3 0h7m-37 1h1m5 0h1m2 0h4m1 0h2m2 0h1m1 0h2m1 0h2m2 0h2m1 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m3 0h2m7 0h1m1 0h1m2 0h3m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h4m1 0h1m2 0h2m5 0h1m1 0h1m4 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h2m5 0h1m1 0h5m1 0h1m1 0h2m1 0h1m1 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m1 0h1m2 0h5m1 0h1m3 0h1m4 0h2m2 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-29 1h1m1 0h1m4 0h8m3 0h1m1 0h1m-29 1h1m1 0h5m2 0h1m6 0h1m2 0h1m1 0h1m3 0h3m2 0h5m-31 1h2m1 0h5m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m-35 1h4m1 0h2m3 0h1m1 0h5m1 0h1m2 0h1m4 0h2m1 0h7m-35 1h1m6 0h3m1 0h3m3 0h3m2 0h1m1 0h1m1 0h2m2 0h1m3 0h1m-37 1h1m1 0h1m1 0h1m1 0h3m1 0h2m3 0h1m1 0h3m2 0h1m1 0h2m2 0h9m-36 1h2m2 0h1m2 0h7m1 0h1m1 0h2m3 0h1m2 0h1m1 0h1m2 0h1m3 0h1m-34 1h1m2 0h2m1 0h1m1 0h1m1 0h1m2 0h2m1 0h1m3 0h1m2 0h9m1 0h2m-36 1h3m1 0h1m1 0h2m1 0h3m1 0h2m3 0h1m7 0h6m3 0h1m-31 1h1m1 0h2m2 0h3m3 0h1m1 0h3m1 0h7m1 0h1m1 0h1m1 0h1m-37 1h2m1 0h2m4 0h2m1 0h6m3 0h1m3 0h1m5 0h1m1 0h3m-36 1h1m2 0h2m1 0h2m1 0h1m1 0h1m2 0h1m2 0h1m2 0h1m1 0h3m2 0h2m2 0h2m2 0h2m-37 1h3m2 0h1m1 0h1m2 0h1m5 0h1m4 0h3m2 0h1m1 0h1m1 0h3m3 0h1m-36 1h2m2 0h3m1 0h1m2 0h3m2 0h1m4 0h4m3 0h2m1 0h3m-33 1h3m4 0h2m1 0h2m2 0h2m1 0h3m1 0h1m1 0h2m1 0h1m4 0h1m1 0h1m-36 1h2m4 0h2m1 0h1m2 0h4m1 0h1m2 0h2m2 0h2m1 0h1m3 0h3m1 0h2m-37 1h1m3 0h1m3 0h1m1 0h2m2 0h5m1 0h5m1 0h1m3 0h3m2 0h2m-37 1h4m1 0h4m5 0h3m4 0h1m5 0h1m1 0h2m1 0h1m1 0h2m-36 1h1m1 0h3m2 0h2m1 0h3m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m9 0h1m-35 1h1m5 0h1m1 0h1m1 0h1m1 0h2m1 0h5m1 0h1m4 0h4m2 0h1m2 0h2m-37 1h1m1 0h1m1 0h1m2 0h1m3 0h3m1 0h1m3 0h4m1 0h1m1 0h2m7 0h2m-37 1h1m1 0h9m1 0h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h2m2 0h8m-28 1h1m1 0h1m5 0h1m2 0h2m1 0h2m2 0h1m1 0h1m3 0h2m-34 1h7m2 0h1m3 0h1m1 0h2m1 0h1m3 0h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-37 1h1m5 0h1m1 0h1m1 0h1m2 0h4m11 0h1m3 0h2m1 0h2m-37 1h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h7m2 0h6m1 0h1m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h3m2 0h1m1 0h2m4 0h1m7 0h2m1 0h1m2 0h1m-36 1h1m1 0h3m1 0h1m1 0h2m2 0h3m5 0h5m1 0h3m7 0h1m-37 1h1m5 0h1m5 0h1m3 0h1m1 0h1m2 0h1m1 0h1m3 0h3m2 0h1m3 0h1m-37 1h7m1 0h1m1 0h4m2 0h2m4 0h4m6 0h1m1 0h3"/></svg><b>ВКонтакте</b></a>
+    </div>
+    <div class="made">
+      <div>
+        <div class="made-top"><svg viewBox="0 0 24 24"><path d="M12 1l2.200 8.800L23 12l-8.800 2.200L12 23l-2.200-8.800L1 12l8.800-2.200z"/></svg>North Labs</div>
+        <p>Студия из Читы: сайты, боты и дизайн. Такую страницу с кодами и заявками в Telegram собираем за 3 дня.</p>
+      </div>
+      <p>Telegram: <a href="https://t.me/northlabs_studio">@northlabs_studio</a></p>
+    </div>
+  </div>
+</section>
+
+<div class="mob-cta hide" id="mobCta"><a class="btn btn-accent" href="#zamer">Записаться на замер</a></div>
+
+<script>
+// Всё демо живёт в браузере: окна замерщика выдуманы, заявка никуда не уходит.
+const TZ = 'Asia/Chita';
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const rub = n => n.toLocaleString('ru-RU').replace(/\s/g, ' ') + ' ₽';
+const hm = m => String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+const WD = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+const WD_FULL = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+const MON = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+const MON_NOM = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+
+// Сейчас по Чите, а не по часам посетителя
+function chitaNow() {
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+    .formatToParts(new Date()).map(x => [x.type, x.value]));
+  return { date: new Date(Date.UTC(+p.year, +p.month - 1, +p.day)), min: +p.hour * 60 + +p.minute };
+}
+const NOW = chitaNow();
+const DAYS = Array.from({ length: 7 }, (_, i) => new Date(NOW.date.getTime() + i * 864e5));
+
+// Откуда пришёл человек: метка в адресе, её ставит QR-код на макете.
+// У каждой площадки своё предложение, в заявке и в итоге она видна по имени.
+const SRC = {
+  lift:   { rep: 'Лифты',        n: 14, where: 'QR-код в лифте',                hello: 'Вы пришли по QR-коду из лифта',                by: 'по QR-коду из лифта',        disc: 10 },
+  market: { rep: 'Супермаркеты', n: 6,  where: 'QR-код на экране в супермаркете', hello: 'Вы пришли по QR-коду с экрана в супермаркете', by: 'по QR-коду из супермаркета', gift: 'мойка и смеситель' },
+  vk:     { rep: 'ВКонтакте',    n: 9,  where: 'реклама ВКонтакте',             hello: 'Вы пришли из рекламы ВКонтакте',               by: 'по рекламе ВКонтакте',       disc: 5 },
+  none:   { rep: 'Зашли сами',   n: 5,  where: 'без метки, человек зашёл сам' },
+};
+let src = (new URLSearchParams(location.search).get('m') || '').toLowerCase();
+if (!SRC[src] || src === 'none') src = 'none';
+
+// Предложение действует до конца месяца; в последние дни месяца переносится на следующий
+const DEADLINE = (function () {
+  const d = NOW.date, y = d.getUTCFullYear(), m = d.getUTCMonth();
+  let end = new Date(Date.UTC(y, m + 1, 0));
+  if (end.getUTCDate() - d.getUTCDate() < 4) end = new Date(Date.UTC(y, m + 2, 0));
+  return end.getUTCDate() + ' ' + MON[end.getUTCMonth()];
+})();
+const offerText = s => s.disc ? 'скидка ' + s.disc + '% на кухню до ' + DEADLINE : s.gift ? s.gift + ' в подарок до ' + DEADLINE : '';
+
+// Расчёт
+const SHAPE = { pryamaya: ['прямая', 1], uglovaya: ['угловая', 1.08], p: ['П-образная', 1.15], ostrov: ['с островом', 1.22] };
+const FAS = { pvh: ['плёнка ПВХ', 32000], emal: ['эмаль', 46000], shpon: ['шпон дуба', 64000] };
+const TOP = { plastik: ['пластик', 0], kamen: ['камень', 9000], kvarc: ['кварц', 16000] };
+const q = { shape: 'uglovaya', len: 3.2, fas: 'emal', top: 'kamen' };
+const lenTxt = v => v.toFixed(1).replace('.', ',') + ' м';
+const fullPrice = () => Math.round(q.len * (FAS[q.fas][1] + TOP[q.top][1]) * SHAPE[q.shape][1] / 1000) * 1000;
+const finalPrice = () => { const d = SRC[src].disc; return d ? Math.round(fullPrice() * (100 - d) / 100 / 100) * 100 : fullPrice(); };
+const kitTxt = () => SHAPE[q.shape][0] + ', ' + lenTxt(q.len) + ', ' + FAS[q.fas][0] + ', ' + TOP[q.top][0];
+
+let shown = null, raf = 0;
+function countTo(el, to) {
+  cancelAnimationFrame(raf);
+  if (shown === null || matchMedia('(prefers-reduced-motion: reduce)').matches) { shown = to; el.textContent = 'от ' + rub(to); return; }
+  const from = shown, t0 = performance.now();
+  (function tick(t) {
+    const k = Math.min(1, (t - t0) / 420), e = 1 - Math.pow(1 - k, 3);
+    shown = k === 1 ? to : Math.round((from + (to - from) * e) / 100) * 100;
+    el.textContent = 'от ' + rub(shown);
+    if (k < 1) raf = requestAnimationFrame(tick);
+  })(t0);
+}
+function renderCalc() {
+  $$('#qShape .tile').forEach(b => { b.classList.toggle('sel', b.dataset.v === q.shape); b.setAttribute('aria-pressed', b.dataset.v === q.shape); });
+  $$('#qFas .opt').forEach(b => { b.classList.toggle('sel', b.dataset.v === q.fas); b.setAttribute('aria-pressed', b.dataset.v === q.fas); });
+  $$('#qTop .opt').forEach(b => { b.classList.toggle('sel', b.dataset.v === q.top); b.setAttribute('aria-pressed', b.dataset.v === q.top); });
+  const r = $('#qLen');
+  r.style.setProperty('--p', ((q.len - r.min) / (r.max - r.min) * 100) + '%');
+  r.setAttribute('aria-valuetext', lenTxt(q.len).replace(' м', ' метра'));
+  $('#lenOut').textContent = lenTxt(q.len);
+  const s = SRC[src], full = fullPrice(), fin = finalPrice();
+  countTo($('#price'), fin);
+  $('#oldPrice').hidden = !s.disc; $('#oldPrice').textContent = rub(full);
+  $('#discLine').hidden = !(s.disc || s.gift);
+  $('#discLine').textContent = s.disc ? 'Скидка ' + s.disc + '% ' + s.by : s.gift ? 'Подарок ' + s.by + ': ' + s.gift : '';
+  sum();
+}
+$$('#qShape .tile').forEach(b => b.onclick = () => { q.shape = b.dataset.v; renderCalc(); });
+$$('#qFas .opt').forEach(b => b.onclick = () => { q.fas = b.dataset.v; renderCalc(); });
+$$('#qTop .opt').forEach(b => b.onclick = () => { q.top = b.dataset.v; renderCalc(); });
+$('#qLen').addEventListener('input', e => { q.len = +e.target.value; renderCalc(); });
+
+// Окна замерщика. Выдуманная занятость: одинаковая при каждом открытии в этот день.
+const st = { day: null, time: null };
+const HOURS = [[10, 20], [10, 20], [10, 20], [10, 20], [10, 20], [10, 20], [10, 20]]; // вс..сб
+const busy = (d, t) => (d.getUTCDate() * 131 + d.getUTCMonth() * 17 + t * 7) % 97 < 36;
+function slotsFor(i) {
+  const d = DAYS[i], [a, b] = HOURS[d.getUTCDay()], out = [];
+  for (let t = a * 60; t < b * 60; t += 60) {
+    if (i === 0 && t < NOW.min + 90) continue;
+    out.push({ t, busy: busy(d, t) });
+  }
+  return out;
+}
+const dayLabel = i => i === 0 ? 'сегодня' : i === 1 ? 'завтра' : WD[DAYS[i].getUTCDay()];
+const dateLong = i => (i < 2 ? dayLabel(i) : WD_FULL[DAYS[i].getUTCDay()]) + ', ' + DAYS[i].getUTCDate() + ' ' + MON[DAYS[i].getUTCMonth()];
+const firstFree = () => { for (let i = 0; i < 7; i++) { const f = slotsFor(i).find(s => !s.busy); if (f) return [i, f.t]; } return [1, null]; };
+
+function renderDays() {
+  $('#days').innerHTML = DAYS.map((d, i) => {
+    const free = slotsFor(i).some(s => !s.busy);
+    return `<button type="button" class="day${i === st.day ? ' sel' : ''}" data-day="${i}" aria-pressed="${i === st.day}"${free ? '' : ' style="opacity:.45"'}><small>${dayLabel(i)}</small><b>${d.getUTCDate()}</b><small>${MON[d.getUTCMonth()].slice(0, 3)}</small></button>`;
+  }).join('');
+  $$('[data-day]').forEach(b => b.onclick = () => { st.day = +b.dataset.day; st.time = null; renderDays(); });
+  renderSlots();
+}
+function renderSlots() {
+  const list = slotsFor(st.day);
+  $('#slots').innerHTML = list.some(s => !s.busy)
+    ? list.map(s => `<button type="button" class="slot${s.busy ? ' busy' : ''}${s.t === st.time ? ' sel' : ''}" data-t="${s.t}"${s.busy ? ' tabindex="-1" aria-disabled="true"' : ` aria-pressed="${s.t === st.time}"`}>${hm(s.t)}</button>`).join('')
+    : '<div class="empty">На этот день всё занято, выберите другой.</div>';
+  $$('#slots [data-t]').forEach(b => { if (!b.classList.contains('busy')) b.onclick = () => { st.time = +b.dataset.t; renderSlots(); }; });
+  sum(); check();
+}
+function sum() {
+  const s = SRC[src];
+  $('#sWhen').textContent = st.time !== null ? dateLong(st.day) + ', ' + hm(st.time) : 'не выбран';
+  $('#sKit').textContent = kitTxt();
+  $('#sPrice').textContent = 'от ' + rub(finalPrice());
+  $('#sBonusRow').hidden = !(s.disc || s.gift);
+  $('#sBonusK').textContent = s.disc ? 'Скидка' : 'Подарок';
+  $('#sBonus').textContent = s.disc ? s.disc + '% ' + s.by : s.gift || '';
+}
+
+// Телефон: только российский номер, вид +7 900 000-00-00
+const ph = $('#ph');
+function digits() { let d = ph.value.replace(/\D/g, ''); if (d[0] === '8') d = '7' + d.slice(1); if (d && d[0] !== '7') d = '7' + d; return d.slice(0, 11); }
+ph.addEventListener('input', () => {
+  const d = digits(); let v = d ? '+7' : '';
+  if (d.length > 1) v += ' ' + d.slice(1, 4);
+  if (d.length > 4) v += ' ' + d.slice(4, 7);
+  if (d.length > 7) v += '-' + d.slice(7, 9);
+  if (d.length > 9) v += '-' + d.slice(9, 11);
+  ph.value = v; ph.classList.remove('bad'); check();
+});
+ph.addEventListener('blur', () => ph.classList.toggle('bad', ph.value !== '' && digits().length !== 11));
+$('#nm').addEventListener('input', check);
+$('#agree').addEventListener('change', check);
+function check() {
+  const need = st.time === null ? 'Выберите время замера'
+    : !$('#nm').value.trim() ? 'Напишите, как к вам обращаться'
+    : digits().length !== 11 ? 'Укажите телефон, замерщик позвонит перед выездом'
+    : !$('#agree').checked ? 'Отметьте согласие на обработку данных' : '';
+  $('#send').disabled = !!need;
+  $('#hint').textContent = need;
+}
+
+// Итог по рекламе: строки с полосками; me - площадка, которой добавляем заявку посетителя
+function repRows(me) {
+  const rows = ['lift', 'market', 'vk', 'none'].map(k => ({ k, name: SRC[k].rep, n: SRC[k].n + (k === me ? 1 : 0) }));
+  const max = Math.max(...rows.map(r => r.n));
+  return rows.map(r => `<div class="rr${r.k === me ? ' me' : ''}"><span class="nm">${r.name}</span><span class="bar"><i data-w="${Math.round(r.n / max * 100)}"></i></span><b>${r.n}</b></div>`).join('');
+}
+
+// Отправка: в демо ничего никуда не уходит, показываем, что получил бы владелец
+function go(n) { $$('.step').forEach(el => el.classList.toggle('on', +el.dataset.step === n)); ctaSync(); }
+$('#send').onclick = () => {
+  const s = SRC[src];
+  $('#tgMsg').innerHTML = '<b>Новая заявка на замер</b><br>' + esc(dateLong(st.day)) + ', ' + hm(st.time) + '<br>' + esc($('#nm').value.trim()) + ', ' + esc(ph.value)
+    + '<br>Кухня: ' + esc(kitTxt()) + '<br>Расчёт: от ' + rub(finalPrice()) + (s.disc ? ', скидка ' + s.disc + '%' : s.gift ? ', подарок: ' + esc(s.gift) : '')
+    + '<span class="src">Откуда: ' + esc(s.where) + '</span>';
+  $('#repMonth').textContent = MON_NOM[NOW.date.getUTCMonth()];
+  $('#repRows').innerHTML = repRows(src);
+  go(2);
+  requestAnimationFrame(() => requestAnimationFrame(() => $$('#repRows i').forEach(i => i.style.width = i.dataset.w + '%')));
+  $('.book').scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+$('#again').onclick = () => {
+  st.time = null; $('#nm').value = ''; ph.value = ''; $('#agree').checked = false;
+  renderDays(); go(1);
+};
+
+// Метка источника: плашка на первом экране, цена, строка в заявке, выбранный код внизу
+function applySrc() {
+  const s = SRC[src];
+  $('#srcPill').hidden = src === 'none';
+  if (src !== 'none') { $('#srcHello').textContent = s.hello; $('#srcOffer').textContent = offerText(s); }
+  $$('.qr').forEach(a => a.classList.toggle('sel', a.dataset.m === src));
+  renderCalc();
+}
+$$('.qr').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  src = a.dataset.m;
+  history.replaceState(null, '', '?m=' + src);
+  applySrc();
+  scrollTo({ top: 0, behavior: 'smooth' });
+}));
+
+// Старт
+(function () {
+  const [d, t] = firstFree();
+  st.day = d;
+  if (t !== null) $('#heroNext').textContent = 'Ближайший замер: ' + dayLabel(d) + ' в ' + hm(t) + ', бесплатно';
+  renderDays();
+  applySrc();
+  $('#repMonth2').textContent = MON_NOM[NOW.date.getUTCMonth()];
+  $('#repRows2').innerHTML = repRows(null);
+})();
+
+// Шапка при прокрутке; кнопка внизу прячется на первом экране, у формы и в самом низу
+const hdr = $('#top'), cta = $('#mobCta');
+let nearForm = false, nearHow = false;
+function ctaSync() { cta.classList.toggle('hide', nearForm || nearHow || scrollY < 520); }
+addEventListener('scroll', () => { hdr.classList.toggle('scrolled', scrollY > 40); ctaSync(); }, { passive: true });
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(es => es.forEach(e => { nearForm = e.isIntersecting; ctaSync(); }), { threshold: .08 }).observe($('#zamer'));
+  new IntersectionObserver(es => es.forEach(e => { nearHow = e.isIntersecting; ctaSync(); }), { threshold: .05 }).observe($('#kak'));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+  $$('.rv').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 60 + 'ms'; io.observe(el); });
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { $$('#repRows2 i').forEach(i => i.style.width = i.dataset.w + '%'); o.disconnect(); } }), { threshold: .4 }).observe($('.rep-sample'));
+} else {
+  $$('.rv').forEach(el => el.classList.add('in'));
+  $$('#repRows2 i').forEach(i => i.style.width = i.dataset.w + '%');
+}
+hdr.classList.toggle('scrolled', scrollY > 40);
+</script>
+</body>
+</html>
