@@ -612,9 +612,10 @@ addEventListener('scroll', ctaSync, { passive: true });
 ctaSync();
 sum();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<!-- Библиотеки лежат рядом, а не на чужом CDN: cdnjs и unpkg стоят за Cloudflare, в России его режут (13.11) -->
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/lenis.min.js"></script>
 <script>
 // Умеренная анимация: заставка, закреплённый первый экран на компьютере,
 // карточки по мере прокрутки, лента слов. Только transform и opacity: на телефоне 60 кадров.
